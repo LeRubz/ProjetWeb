@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <title>Internhub</title>
   <link rel="stylesheet" href="layout.css" />
+  <script src="script.js" defer></script>
+
 </head>
 <body>
 
@@ -25,10 +27,33 @@
 
       <nav class="nav-right">
         <ul>
-          <li><a href="#">Login</a></li>
+          <li><a href="#" onclick="openModal('connexionModal')">Login</a></li>
           <li class="separator"></li>
-          <li><a href="#">Sign in</a></li>
+          <li><a href="#" onclick="openModal('inscriptionModal')">Sign in</a></li>
         </ul>
+        <div id="connexionModal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeModal('connexionModal')">&times;</span>
+              <h2>Connexion</h2>
+              <form method="POST" action="connexion.php">
+                  <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                  <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                  <button type="submit">Se connecter</button>
+              </form>
+          </div>
+      </div>
+  
+      <div id="inscriptionModal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
+              <h2>Inscription</h2>
+              <form method="POST" action="inscription.php">
+                  <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                  <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                  <button type="submit">S'inscrire</button>
+              </form>
+          </div>
+      </div>
       </nav>
     </div>
     <!-- Barre violette -->
@@ -58,38 +83,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    const underline = document.getElementById("nav-underline");
-    const links = document.querySelectorAll("#nav-links a");
-
-    function moveUnderline(el) {
-      const rect = el.getBoundingClientRect();
-      const headerRect = document.getElementById("header").getBoundingClientRect();
-      underline.style.width = `${rect.width}px`;
-      underline.style.left = `${rect.left + window.scrollX}px`;
-      underline.style.top = `${headerRect.bottom + window.scrollY}px`;
-    }
-
-    links.forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        links.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-        moveUnderline(link);
-      });
-    });
-
-    window.addEventListener("load", () => {
-      const activeLink = document.querySelector("#nav-links a.active");
-      if (activeLink) moveUnderline(activeLink);
-    });
-
-    window.addEventListener("resize", () => {
-      const activeLink = document.querySelector("#nav-links a.active");
-      if (activeLink) moveUnderline(activeLink);
-    });
-  </script>
 
 </body>
 </html>
