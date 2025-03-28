@@ -1,0 +1,146 @@
+:root {
+    --violet-principal: #896fbf;
+    --fond-principal: #f7f5fc;
+    --noir: #000000;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    background-color: var(--fond-principal);
+    color: var(--noir);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* HEADER */
+  header {
+    background-color: var(--fond-principal);
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* LOGO */
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    height: 150px;
+    width: auto;
+  }
+  
+  /* NAV CENTER */
+  .nav-center ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  
+  .nav-center a {
+    text-decoration: none;
+    color: var(--noir);
+    font-weight: bold;
+    padding-bottom: 8px;
+  }
+  
+  /* NAV RIGHT */
+  .nav-right ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+  }
+  .nav-right a {
+    text-decoration: none;
+    color: var(--noir);
+    font-weight: bold;
+  }
+  .nav-right .separator {
+    width: 1px;
+    height: 20px;
+    background-color: var(--noir);
+  }
+  
+  /* BARRE VIOLETTE EN DESSOUS */
+  .nav-underline {
+    position: absolute;
+    height: 4px;
+    background-color: var(--violet-principal);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    width: 0;
+    left: 0;
+    top: 100%; /* sera mis à jour dynamiquement par JS */
+    z-index: 10;
+  }
+  
+  /* MAIN */
+  .main-content {
+    flex: 1;
+    padding: 60px 40px;
+  }
+  
+  /* FOOTER */
+  footer {
+    background-color: var(--fond-principal);
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .footer-links a {
+    margin: 0 10px;
+    color: var(--noir);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--violet-principal);
+  }
+  
+  .social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .social-icons img {
+    height: 22px;
+    width: auto;
+    transition: opacity 0.2s ease;
+  }
+  
+  .social-icons img:hover {
+    opacity: 0.7;
+  }
+  
