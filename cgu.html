@@ -3,9 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Conditions Générales d'Utilisation</title>
+        <title>InternHub | Conditions Générales d'Utilisation</title>
+        <link rel="stylesheet" href="./assets/layout.css" />
     </head>
+
+    
     <body>
+        <header id="header">
+            <div class="navbar-container">
+                <a href="index.html" class="logo-link">
+                    <img src="./images/LOGO_SFB_Rognee.png" alt="Internhub Logo" class="logo" />
+                </a>
+
+            <nav class="nav-center">
+                <ul id="nav-links">
+                    <li><a href="Index.html" class="active">Accueil</a></li>
+                    <li><a href="Offres.html">Offres</a></li>
+                    <li><a href="Entreprises.html">Entreprises</a></li>
+                    <li><a href="Wishlist.html">Wishlist</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li class="separator"></li>
+                    <li><a href="signin.html">Sign in</a></li>
+                </ul>
+            </nav>
+            </div>
+            <!-- Barre violette -->
+            <div class="nav-underline" id="nav-underline"></div>
+        </header>
         <h1>Conditions Générales d'Utilisation (CGU)</h1>
 
         <h2>1. Objet</h2>
@@ -43,5 +72,58 @@
         <p>Les présentes CGU sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents.</p>
 
         <p>Pour toute question, contactez-nous à help.internhub@ih.fr  .</p>
+
+        <footer>
+            <p>© 2025 Interhub</p>
+            <nav class="footer-links">
+                <a href="mentions_legales.html">Mentions légales</a>
+                <a href="cookies.html">Cookies</a>
+                <a href="aide.html">Aide et contact</a>
+                <a href="apropos.html">À Propos</a>
+        </nav>
+        <div class="social">
+            <span>Nous suivre sur :</span>
+            <div class="social-icons">
+                <a href="#"><img src="./images/LOGO_Facebook.png" alt="Facebook" /></a>
+                <a href="#"><img src="./images/LOGO_X.png" alt="X" /></a>
+                <a href="#"><img src="./images/LOGO_Tiktok.png" alt="TikTok" /></a>
+                <a href="#"><img src="./images/LOGO_Instagram.png" alt="Instagram" /></a>
+                <a href="#"><img src="./images/LOGO_Linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const underline = document.getElementById("nav-underline");
+        const links = document.querySelectorAll("#nav-links a");
+
+        function moveUnderline(el) {
+            const rect = el.getBoundingClientRect();
+            const headerRect = document.getElementById("header").getBoundingClientRect();
+            underline.style.width = `${rect.width}px`;
+            underline.style.left = `${rect.left + window.scrollX}px`;
+            underline.style.top = `${headerRect.bottom + window.scrollY}px`;
+        }
+
+        links.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+                moveUnderline(link);
+            });
+        });
+
+        window.addEventListener("load", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+
+        window.addEventListener("resize", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+    </script>
+
     </body>
 </html>
