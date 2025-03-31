@@ -60,3 +60,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+const underline = document.getElementById("nav-underline");
+        const links = document.querySelectorAll("#nav-links a");
+
+        function moveUnderline(el) {
+            const rect = el.getBoundingClientRect();
+            const headerRect = document.getElementById("header").getBoundingClientRect();
+            underline.style.width = `${rect.width}px`;
+            underline.style.left = `${rect.left + window.scrollX}px`;
+            underline.style.top = `${headerRect.bottom + window.scrollY}px`;
+        }
+
+        links.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+                moveUnderline(link);
+            });
+        });
+
+        window.addEventListener("load", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+
+        window.addEventListener("resize", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
