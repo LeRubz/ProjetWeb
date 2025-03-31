@@ -7,7 +7,6 @@
 
 </head>
 <body>
-
     <header>
         <div class="logo">
             <img src="images/LOGO_SFB2.png" alt="Logo Internhub">
@@ -18,8 +17,6 @@
             <a href="offres.html">Offres</a>
             <a href="entreprises.html">Entreprises</a>
             <a href="wishlist.html">Wishlist</a>    
-   
-
         </nav>
         <div class="auth">
             <a href="#" onclick="openModal('connexionModal')">Login</a> | <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
@@ -28,20 +25,22 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('connexionModal')">&times;</span>
                 <h2>Connexion</h2>
-                <form method="POST" action="connexion.php">
-                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                <form method="POST" action="src/Controller/loginoutController.php">
+                    <input type="hidden" name="action" value="login">
+                    <input type="text" name="email" placeholder="Email" required><br>
                     <input type="password" name="mdp" placeholder="Mot de passe" required><br>
                     <button type="submit">Se connecter</button>
                 </form>
             </div>
         </div>
-    
+        
         <div id="inscriptionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
                 <h2>Inscription</h2>
-                <form method="POST" action="inscription.php">
-                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                <form method="POST" action="src/Controller/loginoutController.php">
+                    <input type="hidden" name="action" value="signup">
+                    <input type="email" name="email" placeholder="Email" required><br>
                     <input type="password" name="mdp" placeholder="Mot de passe" required><br>
                     <button type="submit">S'inscrire</button>
                 </form>
