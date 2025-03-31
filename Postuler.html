@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InternHub | Postuler</title>
+        <link rel="stylesheet" href="./assets/layout.css" />
+    </head>
+    <body>  
+        
+        <header id="header">
+            <div class="navbar-container">
+                <a href="index.html" class="logo-link">
+                    <img src="./images/LOGO_SFB_Rognee.png" alt="Internhub Logo" class="logo" />
+                </a>
+
+            <nav class="nav-center">
+                <ul id="nav-links">
+                    <li><a href="Index.html" class="active">Accueil</a></li>
+                    <li><a href="Offres.html">Offres</a></li>
+                    <li><a href="Entreprises.html">Entreprises</a></li>
+                    <li><a href="Wishlist.html">Wishlist</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li class="separator"></li>
+                    <li><a href="signin.html">Sign in</a></li>
+                </ul>
+            </nav>
+            </div>
+            <!-- Barre violette -->
+            <div class="nav-underline" id="nav-underline"></div>
+        </header>
+        <main class="main-content">
+            <h1 class="text-center"> Postuler à une offre de stage </h1>
+            <p>Vous pouvez ici répondre directement à l'offre de stage qui a été déposée par l'entreprise. Soyez le plus précis possible dans vos réponses !</p>
+
+                    <!-- Détails de l'offre -->
+            <section>
+                <h2><?php echo $offre['titre']; ?></h2>
+                <small><?php echo $offre['entreprise']; ?> | <?php echo $offre['localisation']; ?> | Publiée le <?php echo date("d/m/Y", strtotime($offre['date_publication'])); ?> | <?php echo $offre['ref_offre']; ?></small>
+
+                <h3 class="margindown">Résumé de l'offre</h3>
+                <ul class="ul">
+                    <li><?php echo $offre['duree']; ?></li>
+                    <li><?php echo $offre['niveau_etudes']; ?></li>
+                    <li><?php echo $offre['domaines']; ?></li>
+                    <li>Exp. <?php echo $offre['experience_min']; ?> an(s)</li>
+                </ul>
+
+            </section>               
+
+            <section>
+                <h2> Envoyez votre candidature dès maintenant ! </h2>
+                <form>
+                    <label> CIVILITÉ</label>
+                    <div class="spacer">
+                        <select name="title">
+                            <option value="Ms"> Madame</option>
+                            <option value="Mr"> Monsieur</option>
+                            <option value="Au"> Autre</option>
+                        </select>
+                    </div>
+                    <div class="spacer">
+                        <label>Nom<br><input id="nom" name="Lastname" type="text" size="50" required></label>
+                    </div>
+                    <div class="spacer">
+                        <label>Prénom<br><input id="prenom" name="Surname" type="text" size="50" required></label>
+                    </div>
+                    <div class="spacer">
+                        <label>Courriel<br><input id="courriel" name="courriel" type="email" size="30" required></label>
+                        <p id="emailError" style="color: red; display: none;">Veuillez entrer un email valide.</p>
+                    </div>
+                    <div class="spacer">
+                        <label> A propos de vous</label>
+                        <div><input type="checkbox" name="PB" id="01"> Permis B </div>
+                        <div><input type="checkbox" name="Veh" id="02"> Véhiculé</div>
+                        <div><input type="checkbox" name="Cer" id="03"> Certification.s (Microsoft, Cisco...)</div>
+                    </div>
+                    <div class="spacer">
+                        <label>Je suis majeur </label>
+                        <input type="radio" name="satisfaction" value="yes" checked>&nbsp;Oui&nbsp;&nbsp;
+                        <input type="radio" name="satisfaction" value="no" class="checkbox">&nbsp;Non
+                    </div>
+                    <div class="spacer">
+                        <label>Votre message au recruteur<br><textarea rows="5" cols="100"></textarea></label>
+                    </div>
+                    <div class="spacer">
+                        <label>CV</label>
+                        <div>
+                            <label for="CV" class="file-label">AJOUTER MON CV</label>
+                            <input class="file" id="CV" type="file" name="CV" accept=".pdf,.doc,.docx,.odt,.rtf,.jpg,.png" required>
+                            <p id="fileError" style="color: red; display: none;">Le fichier doit être au format PDF, DOC, DOCX, ODT, RTF, JPG ou PNG, et ne doit pas dépasser 2 Mo.</p>
+                        </div>
+                        <small>Poids max. 2Mo <p class="spacer"> Formats .pdf, .doc, .docx, .odt, .rtf, .jpg ou .png</p></small>
+                    </div>
+                    <div class="spacer">
+                        <button type="submit">POSTULER</button>&nbsp;<input type="reset" value="RÉINITIALISER" >
+                    </div>
+                    <small><i>En cliquant sur "Postuler", vous acceptez les <a href="cgu.html"> CGU </a> et déclarez avoir pris connaissance de la <a href="pdp.html"> politique de protection des données</a> de notre site.</i></small>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 Interhub</p>
+            <nav class="footer-links">
+                <a href="mentions_legales.html">Mentions légales</a>
+                <a href="cookies.html">Cookies</a>
+                <a href="aide.html">Aide et contact</a>
+                <a href="apropos.html">À Propos</a>
+        </nav>
+        <div class="social">
+            <span>Nous suivre sur :</span>
+            <div class="social-icons">
+                <a href="#"><img src="./images/LOGO_Facebook.png" alt="Facebook" /></a>
+                <a href="#"><img src="./images/LOGO_X.png" alt="X" /></a>
+                <a href="#"><img src="./images/LOGO_Tiktok.png" alt="TikTok" /></a>
+                <a href="#"><img src="./images/LOGO_Instagram.png" alt="Instagram" /></a>
+                <a href="#"><img src="./images/LOGO_Linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const underline = document.getElementById("nav-underline");
+        const links = document.querySelectorAll("#nav-links a");
+
+        function moveUnderline(el) {
+            const rect = el.getBoundingClientRect();
+            const headerRect = document.getElementById("header").getBoundingClientRect();
+            underline.style.width = `${rect.width}px`;
+            underline.style.left = `${rect.left + window.scrollX}px`;
+            underline.style.top = `${headerRect.bottom + window.scrollY}px`;
+        }
+
+        links.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+                moveUnderline(link);
+            });
+        });
+
+        window.addEventListener("load", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+
+        window.addEventListener("resize", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+    </script>
+
+    </body>
+</html>

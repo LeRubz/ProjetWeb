@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InternHub | Politique de protection de données</title>
+        <link rel="stylesheet" href="./assets/layout.css" />
+    </head>
+    <body>
+        <header id="header">
+            <div class="navbar-container">
+                <a href="index.html" class="logo-link">
+                    <img src="./images/LOGO_SFB_Rognee.png" alt="Internhub Logo" class="logo" />
+                </a>
+
+            <nav class="nav-center">
+                <ul id="nav-links">
+                    <li><a href="Index.html" class="active">Accueil</a></li>
+                    <li><a href="Offres.html">Offres</a></li>
+                    <li><a href="Entreprises.html">Entreprises</a></li>
+                    <li><a href="Wishlist.html">Wishlist</a></li>
+                </ul>
+            </nav>
+
+            <nav class="nav-right">
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li class="separator"></li>
+                    <li><a href="signin.html">Sign in</a></li>
+                </ul>
+            </nav>
+            </div>
+            <!-- Barre violette -->
+            <div class="nav-underline" id="nav-underline"></div>
+        </header>
+        <h1>Politique de Protection des Données</h1>
+
+        <h2>1. Introduction</h2>
+        <p>Cette politique explique comment InternHub collecte, utilise et protège les informations personnelles de ses utilisateurs.</p>
+
+        <h2>2. Données Collectées</h2>
+        <p>Nous collectons les types de données suivants :</p>
+        <ul>
+            <li>Informations d'identification (nom, prénom, adresse e-mail, etc.).</li>
+            <li>Informations de connexion et d'utilisation du site.</li>
+            <li>Données professionnelles et académiques pour la mise en relation.</li>
+        </ul>
+
+        <h2>3. Utilisation des Données</h2>
+        <p>Les données collectées sont utilisées pour :</p>
+        <ul>
+            <li>Faciliter la mise en relation entre candidats et recruteurs.</li>
+            <li>Améliorer l’expérience utilisateur et personnaliser les services.</li>
+            <li>Respecter les obligations légales et réglementaires.</li>
+        </ul>
+
+        <h2>4. Partage des Données</h2>
+        <p>Nous ne partageons pas vos données personnelles avec des tiers, sauf dans les cas suivants :</p>
+        <ul>
+            <li>Lorsque cela est nécessaire pour fournir nos services (ex. employeurs).</li>
+            <li>Pour respecter nos obligations légales.</li>
+        </ul>
+
+        <h2>5. Sécurité des Données</h2>
+        <p>Nous mettons en place des mesures de sécurité adaptées pour protéger vos données contre l'accès non autorisé, la perte ou l'altération.</p>
+
+        <h2>6. Droits des Utilisateurs</h2>
+        <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+        <ul>
+            <li>Droit d'accès, de rectification et de suppression de vos données.</li>
+            <li>Droit d’opposition et de limitation du traitement.</li>
+            <li>Droit à la portabilité des données.</li>
+        </ul>
+        <p>Pour exercer ces droits, contactez-nous à help.internhub@ih.fr .</p>
+
+        <h2>7. Conservation des Données</h2>
+        <p>Vos données sont conservées aussi longtemps que nécessaire pour les finalités décrites, sauf obligation légale contraire.</p>
+
+        <h2>8. Modifications de la Politique</h2>
+        <p>Nous nous réservons le droit de modifier cette politique à tout moment. Les utilisateurs seront informés des mises à jour via le site.</p>
+
+        <p>Pour toute question, contactez-nous à help.internhub@ih.fr .</p>
+
+
+        <footer>
+            <p>© 2025 Interhub</p>
+            <nav class="footer-links">
+                <a href="mentions_legales.html">Mentions légales</a>
+                <a href="cookies.html">Cookies</a>
+                <a href="aide.html">Aide et contact</a>
+                <a href="apropos.html">À Propos</a>
+        </nav>
+        <div class="social">
+            <span>Nous suivre sur :</span>
+            <div class="social-icons">
+                <a href="#"><img src="./images/LOGO_Facebook.png" alt="Facebook" /></a>
+                <a href="#"><img src="./images/LOGO_X.png" alt="X" /></a>
+                <a href="#"><img src="./images/LOGO_Tiktok.png" alt="TikTok" /></a>
+                <a href="#"><img src="./images/LOGO_Instagram.png" alt="Instagram" /></a>
+                <a href="#"><img src="./images/LOGO_Linkedin.png" alt="LinkedIn" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const underline = document.getElementById("nav-underline");
+        const links = document.querySelectorAll("#nav-links a");
+
+        function moveUnderline(el) {
+            const rect = el.getBoundingClientRect();
+            const headerRect = document.getElementById("header").getBoundingClientRect();
+            underline.style.width = `${rect.width}px`;
+            underline.style.left = `${rect.left + window.scrollX}px`;
+            underline.style.top = `${headerRect.bottom + window.scrollY}px`;
+        }
+
+        links.forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+                moveUnderline(link);
+            });
+        });
+
+        window.addEventListener("load", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+
+        window.addEventListener("resize", () => {
+            const activeLink = document.querySelector("#nav-links a.active");
+            if (activeLink) moveUnderline(activeLink);
+        });
+    </script>
+
+    </body>
+</html>
