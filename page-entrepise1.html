@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Internhub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="LOGO_SFB2.png" alt="Logo Internhub">
+    </div>
+    <nav>
+        <img src="loupe.png" alt="Search" class="search-icon-navbar" />
+        <a href="index.html">Accueil</a>   
+        <a href="offres.html" class="active">Offres</a>
+        <a href="#">Entreprises</a>
+        <a href="#">Wishlist</a>    
+    </nav>
+    <div class="auth">
+        <a href="#">Login</a> | <a href="#">Sign in</a>
+    </div>
+</header>
+
+<main class="entreprise-page">
+
+    <!-- Bannière -->
+    <section class="banniere-entreprise">
+        <img src="banniere-buffalo.webp" alt="Bannière entreprise">
+        <div class="logo-entreprise">
+            <img src="Buffalo.png" alt="Logo Buffalo">
+        </div>
+    </section>
+
+    <!-- Informations entreprise -->
+    <section class="infos-entreprise">
+        <h1>Buffalo Grill France Recrutement</h1>
+        <p class="localisation">Guyancourt - 78 | Restauration </p>
+
+        <div class="onglets-entreprise">
+            <button id="tab-presentation" class="onglet actif">Présentation</button>
+            <button id="tab-offres" class="onglet">
+                Offres d'emploi 
+                <span class="badge">99+</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Présentation -->
+    <section id="onglet-presentation" class="presentation-entreprise onglet-actif">
+        <div class="contenu-entreprise">
+            <h2>Qui sommes-nous ?</h2>
+
+            <div class="infos-cartes">
+                <div class="carte-info">
+                    <img src="icone-date.png" alt="">
+                    <p class="label">Année de fondation</p>
+                    <p class="valeur">1980</p>
+                </div>
+                <div class="carte-info">
+                    <img src="icone-employe.png" alt="">
+                    <p class="label">Salariés</p>
+                    <p class="valeur">Environ 7 500</p>
+                </div>
+                <div class="carte-info">
+                    <img src="icone-teletravail.png" alt="">
+                    <p class="label">Politique de télétravail</p>
+                    <p class="valeur">Pas de télétravail</p>
+                </div>
+                <div class="carte-info">
+                    <img src="icone-restaurant.png" alt="">
+                    <p class="label">Restaurants en France</p>
+                    <p class="valeur">+360 établissements</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="texte-presentation">
+            <h3>Présentation</h3>
+            <p>
+                Fondé en 1980, Buffalo Grill est l’un des leaders de la restauration à thème en France,
+                reconnu pour son univers chaleureux et sa passion pour la viande grillée.
+                Avec plus de 360 restaurants répartis sur tout le territoire, l’enseigne offre une
+                expérience authentique à l’américaine dans un cadre convivial et accessible à tous.
+            </p>
+            <blockquote>
+                “ Chez Buffalo Grill, ce que je préfère, c’est l’ambiance unique entre collègues et le contact direct avec les clients.
+                C’est une vraie école de la relation humaine. ”
+                <br><strong>Karima, Responsable de salle</strong>
+            </blockquote>
+        </div>
+
+        <section class="processus-recrutement">
+            <h2>Notre processus de recrutement</h2>
+            <div class="timeline">
+                <ul>
+                    <li>Envoi de la candidature</li>
+                    <li>Un entretien avec la personne en charge du recrutement dans le restaurant</li>
+                    <li>Vous pouvez ensuite être amené·e à passer un second entretien</li>
+                    <li>Si votre profil correspond, vous recevrez une réponse rapide !</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="reseaux-sociaux">
+            <p>Nos réseaux :</p>
+            <img src="LOGO_Facebook.png" alt="Facebook">
+            <img src="LOGO_X.png" alt="X">
+        </div>
+    </section>
+
+    <!-- Offres d'emploi -->
+    <section id="onglet-offres" class="offres-emploi onglet-cache">
+        <h2><strong>2520</strong> offres d'emploi chez Buffalo Grill</h2>
+
+
+        <div class="contenu-offres">
+            <div class="liste-offres">
+                <div class="offre-card">
+                    <h3>Manager H/F</h3>
+                    <div class="tags">
+                        <span class="tag">Touques - 14</span>
+                        <span class="tag">CDI</span>
+                    </div>
+                    <p class="date">il y a 8 jours</p>
+                    <button class="btn-offre">Voir l’offre</button>
+                </div>
+
+                <div class="offre-card">
+                    <h3>Manager H/F</h3>
+                    <div class="tags">
+                        <span class="tag">Les Sables-d'Olonne - 85</span>
+                        <span class="tag">CDI</span>
+                    </div>
+                    <p class="date">il y a 8 jours</p>
+                    <button class="btn-offre">Voir l’offre</button>
+                </div>
+            </div>
+
+            <div class="bloc-cv">
+                <img src="cv-icon.png" alt="Icône CV" />
+                <h4>DÉPOSEZ VOTRE CV</h4>
+                <p>Rendez votre CV accessible à l’ensemble des recruteurs de la CVthèque Internhub.</p>
+                <a href="#" class="btn-cv">Rendre mon CV visible</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-left">
+        <p>© 2025 Internhub</p>
+        <a href="#">Conditions</a>
+        <a href="#">Cookies</a>
+        <a href="#">Aide</a>
+        <a href="#">À Propos</a>
+    </div>
+    <div class="footer-right">
+        <p>Nous suivre sur :</p>
+        <div class="socials">
+            <img src="LOGO_Facebook.png" alt="Facebook">
+            <img src="LOGO_X.png" alt="X/Twitter">
+            <img src="LOGO_Tiktok.png" alt="TikTok">
+            <img src="LOGO_Instagram.png" alt="Instagram">
+            <img src="LOGO_Linkedin.png" alt="LinkedIn">
+        </div>
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
