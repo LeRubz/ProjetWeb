@@ -38,18 +38,22 @@ function login($userModel) {
 }
 
 function signup($userModel) {
+    $firstname = $_POST['prenom'] ?? '';
+    $lastname = $_POST['nom'] ?? '';
+    $tel = $_POST['tel'] ?? '';
     $email = $_POST['email'] ?? '';
     $mdp = $_POST['mdp'] ?? '';
 
-    if ($userModel->findByemail($email)) {
-        $_SESSION['error'] = 'email déjà utilisé.';
+    if ($userModel->findByEmail($email)) {
+        $_SESSION['error'] = 'Email déjà utilisé.';
         header('Location: /ProjetWeb-1/index.html');
         exit;
     }
 
     $hashedPassword = password_hash($mdp, PASSWORD_BCRYPT);
-    $userModel->createUser($email, $hashedPassword);
-    $_SESSION['user'] = $userModel->findByemail($email)['id'];
+    $userModel->createUser($firstname, $lastname, $tel, $email, $hashedPassword);
+
+    $_SESSION['user'] = $userModel->findByEmail($email)['ID_USER'];
 
     header('Location: /ProjetWeb-1/index.html');
     exit;
