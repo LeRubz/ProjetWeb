@@ -22,7 +22,30 @@
 
         </nav>
         <div class="auth">
-            <a href="login.html">Login</a> | <a href="signin.html">Sign in</a>
+            <a href="#" onclick="openModal('connexionModal')">Login</a> | <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+        </div>
+        <div id="connexionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('connexionModal')">&times;</span>
+                <h2>Connexion</h2>
+                <form method="POST" action="connexion.php">
+                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                    <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    
+        <div id="inscriptionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
+                <h2>Inscription</h2>
+                <form method="POST" action="inscription.php">
+                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                    <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
         </div>
         
     </header>

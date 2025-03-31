@@ -6,19 +6,6 @@ use App\Models\TaskModel;
 use Twig\Environment;
 
 class TaskController {
-    private $twig;
-
-    public function __construct(Environment $twig) {
-        $this->twig = $twig;
-    }
-
-    public function offersPage() {
-        echo $this->twig->render('page.html.twig');
-    }
-
-    public function CGUPage() {
-        echo $this->twig->render('CGU.twig.html');
-    }
 
     public function companyPage() {
         $filePath =  'entreprises.txt';
