@@ -22,6 +22,70 @@ header {
 }
 
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.modal input[type="text"],
+.modal input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+.modal button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+  
+
+
 
 .logo {
     font-size: 24px;
@@ -982,9 +1046,6 @@ blockquote {
     font-weight: bold;
     font-size: 15px;
   }
-  
-
-
 
   .faq-entreprise {
     max-width: 1000px;
@@ -1068,4 +1129,4 @@ blockquote {
   .faq-item.active .arrow {
     transform: rotate(180deg);
   }
-  
+ 

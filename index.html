@@ -17,10 +17,35 @@
             <a href="index.html" class="active">Accueil</a>   
             <a href="offres.html">Offres</a>
             <a href="entreprises.html">Entreprises</a>
-            <a href="#">Wishlist</a>    
+            <a href="wishlist.html">Wishlist</a>    
+   
+
         </nav>
         <div class="auth">
-            <a href="#">Login</a> | <a href="#">Sign in</a>
+            <a href="#" onclick="openModal('connexionModal')">Login</a> | <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+        </div>
+        <div id="connexionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('connexionModal')">&times;</span>
+                <h2>Connexion</h2>
+                <form method="POST" action="connexion.php">
+                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                    <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                    <button type="submit">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    
+        <div id="inscriptionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
+                <h2>Inscription</h2>
+                <form method="POST" action="inscription.php">
+                    <input type="text" name="pseudo" placeholder="Pseudo" required><br>
+                    <input type="password" name="mdp" placeholder="Mot de passe" required><br>
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
         </div>
         
     </header>
@@ -61,7 +86,7 @@
                     <img src="images/buffalo.png" alt="Buffalo Grill">
                     <h3>Buffalo Grill - Restaurant</h3>
                     <p class="nb_job">1278 jobs</p>
-                    <a href="page-entreprise1.html" class="arrow-link">➜</a>
+                    <a href="page-entrepise1.html" class="arrow-link">➜</a>
                 </div>
         
                 <div class="entreprise-card">
@@ -80,7 +105,7 @@
             </div>
         
             <div class="all-enterprises-button">
-                <a href="entreprises.html">Voir toutes les entreprises</a>
+                <a href="entrerpises.html">Voir toutes les entreprises</a>
             </div>
         
         </section>
