@@ -885,3 +885,101 @@ blockquote {
     display: block;
   }
   
+
+
+
+  .entreprise-card-v2 {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    width: 310px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+  }
+  
+  .entreprise-card-v2:hover {
+    transform: translateY(-3px);
+  }
+  
+  .banner-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    position: relative;
+  }
+  
+  .logo-entreprise-mini {
+    position: relative;
+    margin-top: -30px;
+    margin-left: 15px;
+    background-color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: fit-content;
+  }
+  
+  .logo-entreprise-mini img {
+    height: 35px;
+  }
+  
+  .contenu-entreprise-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contenu-entreprise-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .tag {
+    background-color: #f1f1f1;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .bas-carte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .btn-decouvrir {
+    border: 2px solid #1b0844;
+    background: transparent;
+    color: #1b0844;
+    padding: 8px 14px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-decouvrir:hover {
+    background-color: #896fbf;
+    color: #f7f5fc;
+    border-color: #896fbf;
+  }
+  
+  .nb-jobs {
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
