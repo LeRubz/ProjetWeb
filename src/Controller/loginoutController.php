@@ -45,19 +45,25 @@ function signup($userModel) {
     $mdp = $_POST['mdp'] ?? '';
 
     if ($userModel->findByEmail($email)) {
-        $_SESSION['error'] = 'Email déjà utilisé.';
-        header('Location: /ProjetWeb-1/index.html');
+        $_SESSION['message'] = "Cet email est déjà utilisé.";
+        $_SESSION['type'] = "error";
+        header('Location: /ProjetWeb-1/src/View/transition.php');
         exit;
     }
 
     $hashedPassword = password_hash($mdp, PASSWORD_BCRYPT);
-    $userModel->createUser($firstname, $lastname, $tel, $email, $hashedPassword);
-
-    $_SESSION['user'] = $userModel->findByEmail($email)['ID_USER'];
+    if ($userModel->createUser($firstname, $lastname, $tel, $email, $hashedPassword)) {
+        $_SESSION['message'] = "Inscription réussie ! Bienvenue 😊";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Une erreur est survenue lors de l'inscription.";
+        $_SESSION['type'] = "error";
+    }
 
     header('Location: /ProjetWeb-1/index.html');
     exit;
 }
+
 
 function logout() {
     session_destroy();
