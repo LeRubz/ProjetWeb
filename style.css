@@ -1130,3 +1130,234 @@ blockquote {
     transform: rotate(180deg);
   }
  
+
+
+  /* === Page CGU === */
+.cgu-page {
+    max-width: 900px;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+    background-color: #f7f5fc;
+    color: #1b0844;
+  }
+  
+  .cgu-page h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #896fbf;
+    margin-bottom: 40px;
+  }
+  
+  .cgu-page h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #2e174f;
+    border-left: 4px solid #896fbf;
+    padding-left: 12px;
+  }
+  
+  .cgu-page p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .cgu-page ul {
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .cgu-page ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .cgu-page a {
+    color: #896fbf;
+    text-decoration: underline;
+  }
+  
+
+
+
+  /* === Page Cookies === */
+.cookies-page {
+    max-width: 900px;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+    background-color: #f7f5fc;
+    color: #1b0844;
+  }
+  
+  .cookies-page h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #896fbf;
+    margin-bottom: 40px;
+  }
+  
+  .cookies-page h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #2e174f;
+    border-left: 4px solid #896fbf;
+    padding-left: 12px;
+  }
+  
+  .cookies-page p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .cookies-page ul {
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .cookies-page ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .cookies-page a {
+    color: #896fbf;
+    text-decoration: underline;
+  }
+  
+
+
+  /* === Page Aide === */
+.aide-page {
+    max-width: 900px;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+    background-color: #f7f5fc;
+    color: #1b0844;
+  }
+  
+  .aide-page h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #896fbf;
+    margin-bottom: 40px;
+  }
+  
+  .aide-page h2 {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #2e174f;
+    border-left: 4px solid #896fbf;
+    padding-left: 12px;
+  }
+  
+  .aide-page p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .aide-page a {
+    color: #896fbf;
+    text-decoration: underline;
+  }
+  
+
+
+
+  /* === Page À propos === */
+.apropos-page {
+    max-width: 900px;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+    background-color: #f7f5fc;
+    color: #1b0844;
+  }
+  
+  .apropos-page h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #896fbf;
+    margin-bottom: 40px;
+  }
+  
+  .apropos-page h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #2e174f;
+    border-left: 4px solid #896fbf;
+    padding-left: 12px;
+  }
+  
+  .apropos-page p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .apropos-page ul {
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .apropos-page ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .apropos-page a {
+    color: #896fbf;
+    text-decoration: underline;
+  }
+  
+
+  /* === Page Mentions légales === */
+.mentions-page {
+    max-width: 900px;
+    margin: 120px auto 80px;
+    padding: 0 20px;
+    background-color: #f7f5fc;
+    color: #1b0844;
+}
+
+.mentions-page h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #896fbf;
+    margin-bottom: 40px;
+}
+
+.mentions-page h2 {
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #2e174f;
+    border-left: 4px solid #896fbf;
+    padding-left: 12px;
+}
+
+.mentions-page p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.mentions-page a {
+    color: #896fbf;
+    text-decoration: underline;
+}
