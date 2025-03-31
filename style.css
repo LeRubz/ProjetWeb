@@ -12,9 +12,9 @@ header {
     z-index: 1000; /* pour rester au-dessus de tout */
     background-color: #f7f5fc;
     box-sizing: border-box;
-    padding: 15px 40px;
+    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* petit effet de relief */
@@ -1361,4 +1361,125 @@ blockquote {
 .mentions-page a {
     color: #896fbf;
     text-decoration: underline;
+}
+
+
+/* === MENU BURGER RESPONSIVE === */
+
+/* Icône loupe + burger : cachés en desktop */
+.mobile-icons {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icône burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Bloc menu complet (nav + auth) */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: 20px;
+}
+
+/* Responsive mobile */
+@media screen and (max-width: 768px) {
+  header {
+      padding: 15px 20px;
+  }
+
+  .mobile-icons {
+      display: flex;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 1001;
+  }
+
+  .burger {
+      display: flex;
+  }
+
+  .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100vw;
+      background-color: white;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .menu.active {
+      display: flex;
+  }
+
+  nav {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+  }
+
+  nav a {
+      text-align: center;
+      padding: 12px 0;
+      width: 100%;
+      font-size: 16px;
+  }
+
+  .auth {
+      padding: 10px 0;
+      text-align: center;
+  }
+
+  .burger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .burger.open span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .burger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+
+/* Loupe dans le header pour desktop : visible uniquement au scroll */
+.desktop-loupe {
+  display: none;
+  height: 24px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Quand le header a la classe show-search-icon, on l'affiche */
+header.show-search-icon .desktop-loupe {
+  display: inline-block;
+}
+
+/* En mobile, on masque la version desktop */
+@media screen and (max-width: 768px) {
+  .desktop-loupe {
+      display: none !important;
+  }
 }

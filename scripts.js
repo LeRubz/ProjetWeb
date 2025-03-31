@@ -31,26 +31,26 @@ window.addEventListener('scroll', () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const loupe = document.querySelector('.search-icon-navbar');
+    const loupes = document.querySelectorAll('.search-icon-navbar');
     const floatingSearch = document.getElementById('floatingSearchBar');
     const searchSection = document.querySelector('.search-section');
-    const header = document.querySelector('header');
 
-    // Clic sur la loupe
-    loupe.addEventListener('click', () => {
-        floatingSearch.style.display = 'flex';
+    // Clic sur n’importe quelle loupe (desktop ou mobile)
+    loupes.forEach(loupe => {
+        loupe.addEventListener('click', () => {
+            floatingSearch.style.display = 'flex';
+        });
     });
 
-    // Fermeture auto si on remonte au niveau de la search-section
+    // Fermer la barre flottante si on remonte
     window.addEventListener('scroll', () => {
         const searchTop = searchSection.getBoundingClientRect().top;
-
-        // Si search bar visible à nouveau → cacher celle du haut
         if (searchTop >= 0) {
             floatingSearch.style.display = 'none';
         }
     });
 });
+
 
 
 
@@ -118,7 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
             if (activeLink) moveUnderline(activeLink);
         });
 
-        document.getElementById('burger').addEventListener('click', () => {
-            document.getElementById('menu').classList.toggle('active');
-            document.getElementById('burger').classList.toggle('open');
+        document.addEventListener("DOMContentLoaded", () => {
+            const burger = document.getElementById("burger");
+            const menu = document.getElementById("menu");
+        
+            if (burger && menu) {
+                burger.addEventListener("click", () => {
+                    menu.classList.toggle("active");
+                    burger.classList.toggle("open");
+                });
+            }
         });
+        
