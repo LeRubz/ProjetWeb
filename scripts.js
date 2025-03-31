@@ -117,3 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const activeLink = document.querySelector("#nav-links a.active");
             if (activeLink) moveUnderline(activeLink);
         });
+
+        document.getElementById('burger').addEventListener('click', () => {
+            document.getElementById('menu').classList.toggle('active');
+            document.getElementById('burger').classList.toggle('open');
+        });
