@@ -1047,3 +1047,86 @@ blockquote {
     font-size: 15px;
   }
 
+  .faq-entreprise {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  
+  .faq-header h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .faq-header h2 span {
+    font-weight: bold;
+    color: #896fbf;
+  }
+  
+  .faq-header p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  
+  /*  On passe la grille en vertical */
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  /* Carte de chaque question */
+  .faq-item {
+    background: #f7f5fc;
+    border-radius: 15px;
+    border: 1px solid #1b0844;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Bouton question */
+  .faq-question {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  /* Réponse */
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Quand actif */
+  .faq-item.active .faq-answer {
+    max-height: 500px; /* tu peux augmenter si tu as plus de texte */
+  }
+  
+  /* Flèche */
+  .faq-question .arrow {
+    transition: transform 0.3s ease;
+    font-size: 18px;
+  }
+  
+  /* Flèche tournée quand actif */
+  .faq-item.active .arrow {
+    transform: rotate(180deg);
+  }
+ 
