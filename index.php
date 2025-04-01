@@ -38,4 +38,5 @@ if (array_key_exists($page, $routes)) {
 } else {
     http_response_code(404);
     echo "Page '$page' non trouvée.";
+
 }

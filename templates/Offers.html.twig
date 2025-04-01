@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Offres d'Emploi{% endblock %}
+
+{% block content %}
+    <h1>Nos Offres d'Emploi</h1>
+
+    <div class="offers-list">
+        {% for offer in offers %}
+            <div class="offer">
+                <h2>{{ offer.TITRE }}</h2>
+                <p>Lieu : {{ offer.DOMAIN_ACT }}</p>
+                <p>Entreprise : {{ offer.ID_COMPANY }}</p>
+                <p>Description : {{ offer.DESCR }}</p>
+                <p>Rémunération : {{ offer.SALARY }}</p>
+                <p>Type de contrat : {{ offer.CONTRACT }}</p>
+                <p>Publié le : {{ offer.PUB_DATE }}</p>
+            </div>
+        {% else %}
+            <p>Aucune offre disponible actuellement.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
