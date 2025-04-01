@@ -118,15 +118,19 @@ document.addEventListener("DOMContentLoaded", () => {
             if (activeLink) moveUnderline(activeLink);
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const burger = document.getElementById("burger");
-            const menu = document.getElementById("menu");
+        document.addEventListener("DOMContentLoaded", function () {
+            const burger = document.getElementById("burgerMenu");
+            const mobileNav = document.getElementById("mobileNav");
         
-            if (burger && menu) {
-                burger.addEventListener("click", () => {
-                    menu.classList.toggle("active");
-                    burger.classList.toggle("open");
+            burger.addEventListener("click", () => {
+                mobileNav.classList.toggle("open");
+            });
+        
+            // Fermer le menu si on clique sur un lien
+            mobileNav.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileNav.classList.remove("open");
                 });
-            }
+            });
         });
         
