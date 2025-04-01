@@ -1,42 +1,52 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-// Liste des routes → contrôleur/méthode
-$routes = [
-    'index' => ['controller' => 'IndexController', 'method' => 'index'],
-    'entreprises' => ['controller' => 'EntreprisesController', 'method' => 'index'],
-    // Tu peux en ajouter d’autres ici comme :
-    // 'offres' => ['controller' => 'OffresController', 'method' => 'index'],
-];
+// Importer les contrôleurs nécessaires
+use App\Controllers\IndexController;
+use App\Controllers\EntreprisesController;
+use App\Controllers\ProfilController;
+use App\Controllers\OfferController;
+use App\Controllers\WishlistController;
+
+// Créer une instance de Twig
+$loader = new \Twig\Loader\FilesystemLoader('templates');
+$twig = new \Twig\Environment($loader, [
+    'debug' => true
+]);
 
 // Route demandée
-$page = $_GET['page'] ?? 'index';
+$uri = $_GET['uri'] ?? '/'; // Utilise '/' pour la page d'accueil
 
-// Est-ce que la route existe ?
-if (array_key_exists($page, $routes)) {
-    $controllerName = $routes[$page]['controller'];
-    $method = $routes[$page]['method'];
+// Traitement des différentes routes avec switch/case
+switch ($uri) {
+    case '/':
+        $controller = new IndexController($twig);
+        $controller->index();
+        break;
 
-    // Chargement du contrôleur
-    $controllerFile = __DIR__ . '/' . $controllerName . '.php';
+    case 'Companies':
+        $controller = new EntreprisesController($twig);
+        $controller->EntreprisesPage();
+        break;
 
-    if (file_exists($controllerFile)) {
-        require_once $controllerFile;
-        $controller = new $controllerName();
+    case 'Profil':
+        $controller = new ProfilController($twig);
+        $controller->ProfilPage();
+        break;
 
-        if (method_exists($controller, $method)) {
-            $controller->$method();
-        } else {
-            http_response_code(500);
-            echo "Méthode '$method' introuvable dans $controllerName.";
-        }
-    } else {
-        http_response_code(500);
-        echo "Contrôleur '$controllerName' introuvable.";
-    }
+    case 'Offer':
+        $controller = new OfferController($twig);
+        $controller->OfferPage();
+        break;
 
-} else {
-    http_response_code(404);
-    echo "Page '$page' non trouvée.";
+    case 'Wishlist':
+        $controller = new WishlistController($twig);
+        $controller->WishlistPage();
+        break;
 
+    default:
+        http_response_code(404);
+        echo "Page '$uri' non trouvée.";
+        break;
 }
+
