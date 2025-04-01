@@ -117,3 +117,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const activeLink = document.querySelector("#nav-links a.active");
             if (activeLink) moveUnderline(activeLink);
         });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const burger = document.getElementById("burgerMenu");
+            const mobileNav = document.getElementById("mobileNav");
+        
+            burger.addEventListener("click", () => {
+                mobileNav.classList.toggle("open");
+            });
+        
+            // Fermer le menu si on clique sur un lien
+            mobileNav.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileNav.classList.remove("open");
+                });
+            });
+        });
+        
