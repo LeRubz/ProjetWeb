@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>Internhub</title>
+    <title>{% block title %}Internhub{% endblock %}</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -15,10 +15,10 @@
         <!-- NAVIGATION DESKTOP -->
         <nav class="desktop-nav">
             <img src="images/loupe.png" alt="Search" class="search-icon-navbar" />
-            <a href="index.html" class="active">Accueil</a>   
-            <a href="offres.html">Offres</a>
-            <a href="entreprises.html">Entreprises</a>
-            <a href="wishlist.html">Wishlist</a>    
+            <a href="Accueil" class="active">Accueil</a>   
+            <a href="Offres">Offres</a>
+            <a href="Entreprises">Entreprises</a>
+            <a href="Wishlist">Wishlist</a>    
         </nav>
     
         <!-- Partie AUTH visible sur desktop uniquement -->
@@ -37,10 +37,10 @@
     
         <div class="mobile-nav" id="mobileNav">
             <nav>
-                <a href="index.html" class="active">Accueil</a>   
-                <a href="offres.html">Offres</a>
-                <a href="entreprises.html">Entreprises</a>
-                <a href="wishlist.html">Wishlist</a>    
+                <a href="Accueil" class="active">Accueil</a>   
+                <a href="Offres">Offres</a>
+                <a href="Entreprises">Entreprises</a>
+                <a href="Wishlist">Wishlist</a>    
                 <div class="auth-mobile">
                     <a href="#" onclick="openModal('connexionModal')">Login</a>
                     <span>|</span>
@@ -109,6 +109,7 @@
 </recherche>
 
      <main>
+     {% block content %}{% endblock %}
      </main>
 
 
