@@ -14,9 +14,9 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function createUser($email, $password) {
-        $stmt = $this->pdo->prepare("INSERT INTO user (email, password) VALUES (?, ?)");
-        return $stmt->execute([$email, $password]);
+    public function createUser($firstname, $lastname, $tel, $email, $password) {
+        $stmt = $this->pdo->prepare("INSERT INTO user (firstname, name, tel, email, password, admin_status) VALUES (?, ?, ?, ?, ?, 0)");
+        return $stmt->execute([$firstname, $lastname, $tel, $email, $password]);
     }
 }
 ?>

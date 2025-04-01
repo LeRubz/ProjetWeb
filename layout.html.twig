@@ -48,8 +48,12 @@
                 </div>
             </nav>
         </div>
-    
-        <!-- MODAL CONNEXION -->
+            </nav>
+            <div class="auth">
+                <a href="#" onclick="openModal('connexionModal')">Login</a> | 
+                <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+            </div>
+        </div>
         <div id="connexionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('connexionModal')">&times;</span>
@@ -62,8 +66,6 @@
                 </form>
             </div>
         </div>
-    
-        <!-- MODAL INSCRIPTION -->
         <div id="inscriptionModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
@@ -77,8 +79,6 @@
             </div>
         </div>
     </header>
-
-
 <recherche>
     <div class="floating-search-bar" id="floatingSearchBar">
         <div class="search-bar">
@@ -103,7 +103,143 @@
     </section>
 </recherche>
 
- 
+     <main>
+
+
+
+        <section class="entreprise-preview-container">
+    
+            <div class="entreprise-preview">
+                <div class="entreprise-card">
+                    <img src="images/buffalo.png" alt="Buffalo Grill">
+                    <h3>Buffalo Grill - Restaurant</h3>
+                    <p class="nb_job">1278 jobs</p>
+                    <a href="page-entreprise1.html" class="arrow-link">➜</a>
+                </div>
+        
+                <div class="entreprise-card">
+                    <img src="images/azae.png" alt="Azaé">
+                    <h3>Azaé - Service à la personne</h3>
+                    <p class="nb_job">624 jobs</p>
+                    <a href="#" class="arrow-link">➜</a>
+                </div>
+        
+                <div class="entreprise-card">
+                    <img src="images/superu.png" alt="Super U">
+                    <h3>Super U - Super Marché</h3>
+                    <p class="nb_job">2112 jobs</p>
+                    <a href="#" class="arrow-link">➜</a>
+                </div>
+            </div>
+        
+            <div class="all-enterprises-button">
+                <a href="entreprises.html">Voir toutes les entreprises</a>
+            </div>
+        
+        </section>
+
+        <hr class="section-divider">
+
+        
+        <section class="internhub-info">
+            <h2>DU MAL À TROUVER UN STAGE ?</h2>
+            <p class="highlight">Tout est plus simple avec Internhub</p>
+        
+            <div class="info-content">
+                <img src="images/etapes.png" alt="Étapes de candidature">
+                <div class="info-text">
+                    <h3>Suivez vos candidatures</h3>
+                    <p>Suivez en direct chaque étape de votre candidature.<br>
+                       Postulez, et soyez informé immédiatement dès qu’il y a du nouveau</p>
+                    <a href="offres.html" class="cta-button">Voir les offres</a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="internhub-info reverse">
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>Faites le bon choix, en toute confiance</h3>
+                    <p>Salaire, télétravail, ambiance… Ne choisissez plus à l’aveugle : <br>
+                        accédez au nombre d’offres publiées, à l’âge moyen de l’entreprise, <br>
+                        à sa note sur 5 étoiles et découvrez sa description complète avant<br>
+                        de postuler.
+                    </p>
+                    <a href="entreprises.html" class="cta-button">Voir les entreprises</a>
+                </div>
+                <img src="images/Stats.png" alt="Statistiques">
+            </div>
+        </section>
+
+
+        <section class="internhub-info2">
+            <div class="info-content">
+                <img src="images/oeuil.png" alt="profile">
+                <div class="info-text">
+                    <h3>Faites partie des profils les plus visibles</h3>
+                    <p>En montrant votre intérêt et en restant actif, votre profil est<br>
+                        automatiquement mis en avant auprès des recruteurs. Plus<br>
+                        de chances d’être vu, plus rapidement.
+                    </p>
+                    <a href="profil.html" class="cta-button">Gérer mon profil</a>
+                </div>
+            </div>
+        </section>
+
+
+        <hr class="section-divider">
+
+        
+        <section class="cv-section">
+            <h2>Préparez-vous à décrocher votre <span>stage</span> !</h2>
+        
+            <div class="cv-cards">
+                <div class="cv-card shadow-purple">
+                    <h3 class="white-text">155 000</h3>
+                    <p class="white-text">CV lus en moyenne<br>chaque jour, soyez le <br>prochain à être vu !</p>
+                </div>
+        
+                <div class="cv-card">
+                    <h3 class="black-text">900 710</h3>
+                    <p class="black-text">offres en ce moment, on vous envoie celles qui collent ?</p>
+                </div>
+        
+                <div class="cv-card action">
+                    <div class="action-content">
+                        <div class="text-icon">
+                            <p>soyez visible<br>auprès des<br>
+                            recruteurs</p>
+                            <img src="images/cv-icon.png" alt="Icône CV">
+                        </div>
+                        <a href="#" class="cta-button dark">Déposer mon CV</a>
+                    </div>
+                </div>
+                
+                
+        
+        </section>
+        
+        <hr class="section-divider">
+
+        <section class="internhub-info3">
+            <div class="info-content">
+                <img src="images/mobile.png" alt="mobile">
+                <div class="info-text">
+                    <h3>Postulez où que vous soyez</h3>
+                    <p>Le site est 100 % adapté au mobile : <br>
+                        explorez les offres, suivez vos candidatures<br>
+                        et restez informé directement depuis votre <br>
+                        téléphone.
+                        
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        
+    </main>
 
 <footer>
     <div class="footer-left">

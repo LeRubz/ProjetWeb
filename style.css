@@ -12,9 +12,9 @@ header {
     z-index: 1000; /* pour rester au-dessus de tout */
     background-color: #f7f5fc;
     box-sizing: border-box;
-    padding: 15px 40px;
+    padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* petit effet de relief */
@@ -51,7 +51,7 @@ header {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #f7f5fc;
   padding: 20px;
   border-radius: 8px;
   width: 350px;
@@ -76,6 +76,7 @@ header {
 }
 
 .modal input[type="text"],
+.modal input[type="email"],
 .modal input[type="password"] {
   width: calc(100% - 20px);
   padding: 10px;
@@ -86,7 +87,7 @@ header {
 }
 
 .modal button[type="submit"] {
-  background-color: #007bff;
+  background-color: #896fbf;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -96,7 +97,7 @@ header {
 }
 
 .modal button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #896fbf;
 }
   
 
@@ -1420,8 +1421,6 @@ blockquote {
 }
 
 
-
-
 /*_________________________ Media Queries (Responsive) ___________________________*/
 
 /* --- MENU BURGER --- */
@@ -1484,8 +1483,3 @@ blockquote {
       display: flex;
   }
 }
-
-
-
-
-

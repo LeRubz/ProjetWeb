@@ -38,22 +38,32 @@ function login($userModel) {
 }
 
 function signup($userModel) {
+    $firstname = $_POST['prenom'] ?? '';
+    $lastname = $_POST['nom'] ?? '';
+    $tel = $_POST['tel'] ?? '';
     $email = $_POST['email'] ?? '';
     $mdp = $_POST['mdp'] ?? '';
 
-    if ($userModel->findByemail($email)) {
-        $_SESSION['error'] = 'email déjà utilisé.';
-        header('Location: /ProjetWeb-1/index.html');
+    if ($userModel->findByEmail($email)) {
+        $_SESSION['message'] = "Cet email est déjà utilisé.";
+        $_SESSION['type'] = "error";
+        header('Location: /ProjetWeb-1/src/View/transition.php');
         exit;
     }
 
     $hashedPassword = password_hash($mdp, PASSWORD_BCRYPT);
-    $userModel->createUser($email, $hashedPassword);
-    $_SESSION['user'] = $userModel->findByemail($email)['id'];
+    if ($userModel->createUser($firstname, $lastname, $tel, $email, $hashedPassword)) {
+        $_SESSION['message'] = "Inscription réussie ! Bienvenue 😊";
+        $_SESSION['type'] = "success";
+    } else {
+        $_SESSION['message'] = "Une erreur est survenue lors de l'inscription.";
+        $_SESSION['type'] = "error";
+    }
 
     header('Location: /ProjetWeb-1/index.html');
     exit;
 }
+
 
 function logout() {
     session_destroy();
