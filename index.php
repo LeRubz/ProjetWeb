@@ -1,27 +1,42 @@
 <?php
-require "vendor/autoload.php";
+require_once __DIR__ . '/vendor/autoload.php';
 
-use App\Controllers\OfferController;
+// Liste des routes → contrôleur/méthode
+$routes = [
+    'index' => ['controller' => 'IndexController', 'method' => 'index'],
+    'entreprises' => ['controller' => 'EntreprisesController', 'method' => 'index'],
+    // Tu peux en ajouter d’autres ici comme :
+    // 'offres' => ['controller' => 'OffresController', 'method' => 'index'],
+];
 
-$loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new \Twig\Environment($loader, [
-    'debug' => true
-]);
+// Route demandée
+$page = $_GET['page'] ?? 'index';
 
-if (isset($_GET['uri'])) {
-    $uri = $_GET['uri'];
+// Est-ce que la route existe ?
+if (array_key_exists($page, $routes)) {
+    $controllerName = $routes[$page]['controller'];
+    $method = $routes[$page]['method'];
+
+    // Chargement du contrôleur
+    $controllerFile = __DIR__ . '/' . $controllerName . '.php';
+
+    if (file_exists($controllerFile)) {
+        require_once $controllerFile;
+        $controller = new $controllerName();
+
+        if (method_exists($controller, $method)) {
+            $controller->$method();
+        } else {
+            http_response_code(500);
+            echo "Méthode '$method' introuvable dans $controllerName.";
+        }
+    } else {
+        http_response_code(500);
+        echo "Contrôleur '$controllerName' introuvable.";
+    }
+
 } else {
-    $uri = '/';
-}
+    http_response_code(404);
+    echo "Page '$page' non trouvée.";
 
-$controller = new OfferController($twig);
-
-switch ($uri) {
-    case '/Offers':
-        $controller->listOffers();  // Affiche la liste des offres
-        break;
-    default:
-        header("HTTP/1.0 404 Not Found");
-        echo '404 Not Found';
-        break;
 }
