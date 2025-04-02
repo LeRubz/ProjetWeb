@@ -10,6 +10,7 @@ use App\Controllers\EntreprisesController;
 use App\Controllers\ProfilController;
 use App\Controllers\OfferController;
 use App\Controllers\WishlistController;
+use App\Controllers\StaticController; // <-- Nouveau
 
 // Créer une instance de Twig
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -49,6 +50,32 @@ switch ($uri) {
     case 'Wishlist':
         $controller = new WishlistController($twig);
         $controller->WishlistPage($user);
+        break;
+
+    // ✅ Routes statiques :
+    case 'aide':
+        $controller = new StaticController($twig);
+        $controller->aide();
+        break;
+
+    case 'cgu':
+        $controller = new StaticController($twig);
+        $controller->cgu();
+        break;
+
+    case 'cookies':
+        $controller = new StaticController($twig);
+        $controller->cookies();
+        break;
+
+    case 'apropos':
+        $controller = new StaticController($twig);
+        $controller->apropos();
+        break;
+
+    case 'mentions':
+        $controller = new StaticController($twig);
+        $controller->mentions();
         break;
 
     default:
