@@ -13,7 +13,6 @@
             </div>
         </div>
     
-        <!-- NAVIGATION DESKTOP -->
         <nav class="desktop-nav">
             <img src="images/loupe.png" alt="Search" class="search-icon-navbar" />
             <a href="index.php" class="active">Accueil</a>   
@@ -22,11 +21,17 @@
             <a href="index.php?uri=Wishlist">Wishlist</a>
         </nav>
     
-        <!-- Partie AUTH visible sur desktop uniquement -->
         <div class="auth desktop-auth">
-            <a href="#" onclick="openModal('connexionModal')">Login</a> |
-            <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+            <?php if (isset($_SESSION['user'])): ?>
+                <span>Bienvenue, <strong><?= htmlspecialchars($_SESSION['user']['prenom']) ?></strong></span> |
+                <a href="/ProjetWeb-1/LoginoutController.php?action=logout">Logout</a>
+            <?php else: ?>
+                <a href="#" onclick="openModal('connexionModal')">Login</a> |
+                <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+            <?php endif; ?>
         </div>
+
+
 
     
         <!-- MENU BURGER (visible uniquement sur mobile) -->

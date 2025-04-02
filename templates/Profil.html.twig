@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block content %}
+<main class="profil-page">
+    <div class="profil-container">
+        <h1>Mon Profil</h1>
+
+        <div class="profil-info">
+            <p><strong>Nom :</strong> {{ user.NAME }}</p>
+            <p><strong>Prénom :</strong> {{ user.FIRSTNAME }}</p>
+            <p><strong>Email :</strong> {{ user.EMAIL }}</p>
+            <p><strong>Téléphone :</strong> {{ user.TEL }}</p>
+            <p><strong>Statut :</strong> 
+                {% if user.ADMIN_STATUS == '1' %}
+                    Administrateur
+                {% elseif user.ADMIN_STATUS == '2' %}
+                    Super Admin
+                {% else %}
+                    Utilisateur
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="profil-actions">
+            <a href="/modifier-profil" class="btn-edit-profil">Modifier mes infos</a>
+            <a href="/logout" class="btn-logout">Se déconnecter</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

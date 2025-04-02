@@ -3,21 +3,51 @@
 {% block title %}Offres d'Emploi{% endblock %}
 
 {% block content %}
-    <h1>Nos Offres d'Emploi</h1>
 
-    <div class="offers-list">
-        {% for offer in offers %}
-            <div class="offer">
-                <h2>{{ offer.TITRE }}</h2>
-                <p>Domaine d'activité : {{ offer.DOMAIN_ACT }}</p>
-                <p>Entreprise : {{ offer.ID_COMPANY }}</p>
-                <p>Description : {{ offer.DESCR }}</p>
-                <p>Rémunération : {{ offer.SALARY }}</p>
-                <p>Type de contrat : {{ offer.CONTRACT }}</p>
-                <p>Publié le : {{ offer.PUB_DATE }}</p>
+<main class="offres-page">
+    <div class="offres-container">
+        
+        <!-- Filtres -->
+        <section class="filtres-offres">
+            <h2>Filtrer les offres</h2>
+            <div class="filtres">
+                <select class="offre-card">
+                    <option selected disabled>Entreprise</option>
+                    <option>Tech Solutions</option>
+                    <option>Design Pro</option>
+                    <option>IT Consulting</option>
+                    <option>Data Analytics</option>
+                    <option>HelpDesk Corp</option>
+                </select>
+                <select class="offre-card">
+                    <option selected disabled>Domaine</option>
+                    <option>Informatique</option>
+                    <option>Design</option>
+                    <option>Gestion</option>
+                    <option>Big Data</option>
+                    <option>IT Support</option>
+                </select>
+
             </div>
-        {% else %}
-            <p>Aucune offre disponible actuellement.</p>
-        {% endfor %}
+        </section>
+
+        <!-- Liste des offres -->
+        <section class="liste-global-offres">
+            {% for offer in offers %}
+                <div class="offre-card">
+                    <h3>{{ offer.TITRE }}</h3>
+                    <p>{{ offer.DOMAIN_ACT }} - {{ offer.DESCR|length > 60 ? offer.DESCR|slice(0, 60) ~ '...' : offer.DESCR }}</p>
+                    <div class="tags">
+                        <span class="tag">{{ offer.CONTRACT }}</span>
+                        <span class="tag">{{ offer.SALARY }} €</span>
+                    </div>
+                    <p class="date">publié le {{ offer.PUB_DATE|date("d/m/Y") }}</p>
+                    <button class="btn-offre">Voir l'offre</button>
+                </div>
+            {% else %}
+                <p>Aucune offre disponible actuellement.</p>
+            {% endfor %}
+        </section>
     </div>
+</main>
 {% endblock %}
