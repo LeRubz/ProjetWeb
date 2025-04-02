@@ -17,4 +17,10 @@ class ProfilModel {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function updateUser($id, $nom, $prenom, $email, $tel) {
+        $stmt = $this->pdo->prepare("UPDATE USER SET NAME = ?, FIRSTNAME = ?, EMAIL = ?, TEL = ? WHERE ID_USER = ?");
+        $stmt->execute([$nom, $prenom, $email, $tel, $id]);
+    }
+    
 }

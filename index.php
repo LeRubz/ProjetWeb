@@ -42,6 +42,11 @@ switch ($uri) {
         $controller->ProfilPage($user);
         break;
 
+    case 'Profil/update':
+        $controller = new ProfilController($twig);
+        $controller->updateProfil();
+        break;
+
     case 'Offer':
         $controller = new OfferController($twig);
         $controller->OfferPage($user);
@@ -77,6 +82,7 @@ switch ($uri) {
         $controller = new StaticController($twig);
         $controller->mentions();
         break;
+        
 
     default:
         http_response_code(404);

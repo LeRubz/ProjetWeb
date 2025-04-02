@@ -2,17 +2,33 @@
 
 {% block title %}Mon Profil{% endblock %}
 
+{% block recherche %}{% endblock %}
+
 {% block content %}
 <main class="profil-page">
     <div class="profil-container">
         <h1>Mon Profil</h1>
 
         <div class="profil-info">
-            <p><strong>Nom :</strong> {{ user.NAME }}</p>
-            <p><strong>Prénom :</strong> {{ user.FIRSTNAME }}</p>
-            <p><strong>Email :</strong> {{ user.EMAIL }}</p>
-            <p><strong>Téléphone :</strong> {{ user.TEL }}</p>
-            <p><strong>Statut :</strong> 
+    {% if editMode %}
+        <form method="POST" action="index.php?uri=Profil/update" class="profil-form">
+            <label><strong>Nom :</strong>
+                <input type="text" name="nom" value="{{ user.NAME }}" required>
+            </label>
+
+            <label><strong>Prénom :</strong>
+                <input type="text" name="prenom" value="{{ user.FIRSTNAME }}" required>
+            </label>
+
+            <label><strong>Email :</strong>
+                <input type="email" name="email" value="{{ user.EMAIL }}" required>
+            </label>
+
+            <label><strong>Téléphone :</strong>
+                <input type="text" name="tel" value="{{ user.TEL }}" required>
+            </label>
+
+            <p><strong>Statut :</strong>
                 {% if user.ADMIN_STATUS == '1' %}
                     Administrateur
                 {% elseif user.ADMIN_STATUS == '2' %}
@@ -21,12 +37,33 @@
                     Utilisateur
                 {% endif %}
             </p>
-        </div>
+
+            <div class="profil-actions">
+                <button type="submit" class="btn-edit-profil">💾 Enregistrer</button>
+                <a href="index.php?uri=Profil" class="btn-logout" style="background-color:#bbb">Annuler</a>
+            </div>
+        </form>
+    {% else %}
+        <p><strong>Nom :</strong> {{ user.NAME }}</p>
+        <p><strong>Prénom :</strong> {{ user.FIRSTNAME }}</p>
+        <p><strong>Email :</strong> {{ user.EMAIL }}</p>
+        <p><strong>Téléphone :</strong> {{ user.TEL }}</p>
+        <p><strong>Statut :</strong>
+            {% if user.ADMIN_STATUS == '1' %}
+                Administrateur
+            {% elseif user.ADMIN_STATUS == '2' %}
+                Super Admin
+            {% else %}
+                Utilisateur
+            {% endif %}
+        </p>
 
         <div class="profil-actions">
-            <a href="/modifier-profil" class="btn-edit-profil">Modifier mes infos</a>
-            <a href="/logout" class="btn-logout">Se déconnecter</a>
+            <a href="index.php?uri=Profil&edit=1" class="btn-edit-profil">Modifier mes infos</a>
         </div>
-    </div>
+    {% endif %}
+</div>
+
+
 </main>
 {% endblock %}

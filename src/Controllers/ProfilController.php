@@ -13,15 +13,66 @@ class ProfilController extends Controller
 
     public function ProfilPage()
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['user'])) {
+            header("Location: /login");
+            exit;
+        }   
+    
+        $userId = $_SESSION['user']['ID_USER'] ?? $_SESSION['user']['id'];
+        $user = $this->model1->getUserById($userId);
+    
+        // Si l'URL contient ?edit=1, on active le mode édition
+        $editMode = isset($_GET['edit']) && $_GET['edit'] == '1';
+    
+        $this->render('Profil.html.twig', [
+            'user' => $user,
+            'editMode' => $editMode
+        ]);
+    }
+    
+
+    public function updateProfil()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         if (!isset($_SESSION['user'])) {
             header("Location: /login");
             exit;
         }
-
-        $userId = $_SESSION['user']['ID_USER'];
+    
+        $userId = $_SESSION['user']['id'];
+        $nom = $_POST['nom'] ?? '';
+        $prenom = $_POST['prenom'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $tel = $_POST['tel'] ?? '';
+    
+        // ✅ 1. Met à jour la BDD
+        $this->model1->updateUser($userId, $nom, $prenom, $email, $tel);
+    
+        // ✅ 2. Recharge les infos à jour depuis la BDD
         $user = $this->model1->getUserById($userId);
-
-        $this->render('Profil.html.twig', ['user' => $user]);
+    
+        // ✅ 3. Mets à jour la session
+        $_SESSION['user'] = [
+            'id' => $user['ID_USER'],
+            'prenom' => $user['FIRSTNAME'],
+            'email' => $user['EMAIL'],
+            'adminstatus' => $user['ADMIN_STATUS']
+        ];
+    
+        // ✅ 4. Redirection vers la page profil
+        header("Location: index.php?uri=Profil");
+        exit;
     }
+    
+
+
+
+
 }

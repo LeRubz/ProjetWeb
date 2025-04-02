@@ -45,7 +45,7 @@ function login($userModel) {
     if ($user && isset($user['PASSWORD']) && password_verify($mdp, $user['PASSWORD'])) {
         session_regenerate_id(true); // Sécurise la session
         $_SESSION['user'] = [
-            'id' => $user['ID'],
+            'id' => $user['ID_USER'],
             'prenom' => $user['FIRSTNAME'],
             'email' => $user['EMAIL'],
             'adminstatus' => $user['ADMIN_STATUS']

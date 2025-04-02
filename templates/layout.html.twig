@@ -22,9 +22,9 @@
         </nav>
 
         <div class="auth desktop-auth">
-            {% if user %}
-                {% if user.prenom %}
-                    <a href="#">{{ user.prenom }}</a> |
+            {% if sessionUser %}
+                {% if sessionUser.prenom %}
+                    <a href="index.php?uri=Profil">{{ sessionUser.prenom }}</a> |
                     <form method="post" action="src/Controllers/loginoutController.php">
                         <input type="hidden" name="action" value="logout">
                         <button class="logout" type="submit">Se déconnecter</button>
@@ -139,7 +139,7 @@
 
 <footer>
     <div class="footer-left">
-        <a href="index.php?uri=mentions">@2025 InternHub</a>
+        <a href="index.php?uri=mentions">© 2025 InternHub</a>
         <a href="index.php?uri=cgu">Conditions</a>
         <a href="index.php?uri=cookies">Cookies</a>
         <a href="index.php?uri=aide">Aide</a>
