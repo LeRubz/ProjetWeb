@@ -1508,3 +1508,70 @@ blockquote {
       display: flex;
   }
 }
+
+
+
+
+/* ============================ PAGE PROFIL ======================= */
+.profile-page {
+  max-width: 800px;
+  margin: 120px auto;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.profile-container {
+  padding: 40px;
+}
+
+.profile-container h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #1b0844;
+}
+
+.profile-info p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.profile-info strong {
+  color: #896fbf;
+}
+
+.profile-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-edit-profile,
+.btn-logout {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-edit-profile {
+  background-color: #896fbf;
+  color: #fff;
+}
+
+.btn-edit-profile:hover {
+  background-color: #7159a9;
+}
+
+.btn-logout {
+  background-color: #d93652;
+  color: #fff;
+}
+
+.btn-logout:hover {
+  background-color: #b72741;
+}
