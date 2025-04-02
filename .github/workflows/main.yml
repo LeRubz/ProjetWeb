@@ -22,7 +22,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no azureuser@20.123.200.110 << 'EOF'
             cd /var/www/html/ProjetWeb
             git pull origin main
-            cd dev-web
             composer install --no-dev --optimize-autoloader
             sudo php bin/console cache:clear --env=prod
           EOF
