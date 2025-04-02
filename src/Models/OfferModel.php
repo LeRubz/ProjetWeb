@@ -7,10 +7,15 @@ class OfferModel {
     private $pdo;
 
     public function __construct() {
-        $this->pdo = new PDO('mysql:host=localhost;dbname=projetweb', 'root', '', [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]);
+        // Establishing a PDO connection
+        $this->pdo = new PDO(
+            'mysql:host=cesi-demo-projetweb.westeurope.cloudapp.azure.com;dbname=projetweb;charset=utf8mb4',  // DSN (Data Source Name)
+            'alexis',
+            '12345678', 
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        );
     }
+    
 
     // Fonction pour récupérer toutes les offer
     public function getAllOffers() {
