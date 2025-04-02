@@ -23,4 +23,11 @@ class ProfilModel {
         $stmt->execute([$nom, $prenom, $email, $tel, $id]);
     }
     
+
+    public function deleteUser($id)
+{
+    $stmt = $this->pdo->prepare("DELETE FROM USER WHERE ID_USER = ?");
+    $stmt->execute([$id]);
+}
+
 }

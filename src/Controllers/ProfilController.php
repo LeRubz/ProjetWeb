@@ -70,6 +70,28 @@ class ProfilController extends Controller
         header("Location: index.php?uri=Profil");
         exit;
     }
+
+
+    public function deleteProfil()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user'])) {
+            header("Location: /login");
+            exit;
+        }
+
+        $userId = $_SESSION['user']['id'];
+        
+        $this->model1->deleteUser($userId);
+        session_destroy();
+
+        header("Location: index.php"); // redirige vers l'accueil
+        exit;
+    }
+
     
 
 
