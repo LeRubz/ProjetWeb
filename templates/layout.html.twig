@@ -25,7 +25,8 @@
             {% if user %}
                 {% if user.prenom %}
                     <a href="#">{{ user.prenom }}</a> |
-                    <form action="/ProjetWeb-1/logout.php" method="post">
+                    <form method="post" action="src/Controllers/loginoutController.php">
+                        <input type="hidden" name="action" value="logout">
                         <button class="logout" type="submit">Se déconnecter</button>
                     </form>
                 {% else %}

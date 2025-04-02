@@ -13,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'signup':
                 signup($userModel);
                 break;
+            case 'logout': // Ajout du cas logout
+                logout();
+                break;
         }
     }
 }
@@ -31,7 +34,7 @@ function login($userModel) {
     // Vérification que l'email est valide
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Email invalide.";
-        header("Location: /ProjetWeb-1/login.php");
+        header("Location: /ProjetWeb-1/");
         exit();
     }
 
