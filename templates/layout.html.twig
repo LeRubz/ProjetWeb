@@ -20,15 +20,23 @@
             <a href="index.php?uri=Companies">Entreprises</a>
             <a href="index.php?uri=Wishlist">Wishlist</a>
         </nav>
-    
+
         <div class="auth desktop-auth">
-            <?php if (isset($_SESSION['user'])): ?>
-                <span>Bienvenue, <strong><?= htmlspecialchars($_SESSION['user']['prenom']) ?></strong></span> |
-                <a href="/ProjetWeb-1/LoginoutController.php?action=logout">Logout</a>
-            <?php else: ?>
+            {% if user %}
+                {% if user.prenom %}
+                    <a href="#">{{ user.prenom }}</a> |
+                    <form action="/ProjetWeb-1/logout.php" method="post">
+                        <button class="logout" type="submit">Se déconnecter</button>
+                    </form>
+                {% else %}
+                    <a href="#" onclick="openModal('connexionModal')">Login</a> |
+                    <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+                {% endif %}
+            {% else %}
+                {# Si l'utilisateur n'est pas connecté, afficher les boutons d'inscription et de connexion #}
                 <a href="#" onclick="openModal('connexionModal')">Login</a> |
                 <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
-            <?php endif; ?>
+            {% endif %}
         </div>
 
 
@@ -70,6 +78,12 @@
                     <input type="password" name="mdp" placeholder="Mot de passe" required><br>
                     <button type="submit">Se connecter</button>
                 </form>
+                {% if session.error %}
+                    <div class="error-message">{{ session.error }}</div>
+                {% endif %}
+                {% if session.success %}
+                    <div class="success-message">{{ session.success }}</div>
+                {% endif %}
             </div>
         </div>
     

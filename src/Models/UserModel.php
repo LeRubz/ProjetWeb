@@ -10,9 +10,12 @@ class UserModel {
 
     public function findByEmail($email) {
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE email = ?");
-        $stmt->execute([$email]);
+        if (!$stmt->execute([$email])) {
+            echo "Erreur dans l'exécution de la requête : " . implode(" ", $stmt->errorInfo());
+        }
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
 
     public function createUser($firstname, $lastname, $tel, $email, $password) {
         $stmt = $this->pdo->prepare("INSERT INTO user (firstname, name, tel, email, password, admin_status) VALUES (?, ?, ?, ?, ?, 0)");

@@ -13,11 +13,18 @@ class IndexController extends Controller
     }
 
     // Méthode pour afficher la page d'accueil
-    public function index()
+    public function index($user)
     {
-        // Utilisation de la méthode render du parent pour afficher la vue index.html.twig
-        $this->render('index.html.twig');
+        // Vérifier si un utilisateur est connecté et passer l'objet $user à Twig
+        $this->render('index.html.twig', ['user' => $user]);
     }
 }
+
+
+
+
+
+
+
 
 

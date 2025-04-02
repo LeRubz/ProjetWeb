@@ -1,4 +1,7 @@
 <?php
+// Démarre la session pour pouvoir accéder aux variables de session
+session_start();
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Importer les contrôleurs nécessaires
@@ -14,34 +17,38 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true
 ]);
 
+// Vérifier si l'utilisateur est connecté
+$user = isset($_SESSION['user']) ? $_SESSION['user'] : null; // On récupère l'utilisateur si connecté, sinon $user sera null
+
 // Route demandée
 $uri = $_GET['uri'] ?? '/'; // Utilise '/' pour la page d'accueil
 
 // Traitement des différentes routes avec switch/case
 switch ($uri) {
     case '/':
+        // Passer l'objet $user (s'il existe) à la vue Twig, dans le layout
         $controller = new IndexController($twig);
-        $controller->index();
+        $controller->index($user); // Passe $user au contrôleur
         break;
 
     case 'Companies':
         $controller = new EntreprisesController($twig);
-        $controller->EntreprisesPage();
+        $controller->EntreprisesPage($user);
         break;
 
     case 'Profil':
         $controller = new ProfilController($twig);
-        $controller->ProfilPage();
+        $controller->ProfilPage($user);
         break;
 
     case 'Offer':
         $controller = new OfferController($twig);
-        $controller->OfferPage();
+        $controller->OfferPage($user);
         break;
 
     case 'Wishlist':
         $controller = new WishlistController($twig);
-        $controller->WishlistPage();
+        $controller->WishlistPage($user);
         break;
 
     default:
@@ -49,4 +56,3 @@ switch ($uri) {
         echo "Page '$uri' non trouvée.";
         break;
 }
-

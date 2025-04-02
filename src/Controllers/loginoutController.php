@@ -22,24 +22,40 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 }
 
 function login($userModel) {
-    $email = $_POST['email'] ?? '';
+    session_start(); // Démarre la session si elle n'est pas déjà démarrée
+
+    // Récupération et nettoyage des entrées du formulaire
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $mdp = $_POST['mdp'] ?? '';
 
-    $user = $userModel->findByemail($email);
-    if ($user && password_verify($mdp, $user['password'])) {
+    // Vérification que l'email est valide
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Email invalide.";
+        header("Location: /ProjetWeb-1/login.php");
+        exit();
+    }
+
+    // Recherche de l'utilisateur dans la base de données
+    $user = $userModel->findByEmail($email);
+
+    // Vérification de l'utilisateur et du mot de passe
+    if ($user && isset($user['PASSWORD']) && password_verify($mdp, $user['PASSWORD'])) {
+        session_regenerate_id(true); // Sécurise la session
         $_SESSION['user'] = [
-            'id' => $user['id'],
-            'pseudo' => $user['prenom'],
-            'email' => $user['email']
+            'id' => $user['ID'],
+            'prenom' => $user['FIRSTNAME'],
+            'email' => $user['EMAIL']
         ];
-        header('Location: /ProjetWeb-1/');
-        exit;
+        $_SESSION['success'] = "Connexion réussie, bienvenue " . $user['FIRSTNAME'] . " !";
+        header("Location: /ProjetWeb-1/"); // Redirection après connexion
+        exit();
     } else {
-        $_SESSION['error'] = 'Identifiants incorrects';
-        header('Location: /ProjetWeb-1/');
-        exit;
+        $_SESSION['error'] = "Identifiants incorrects.";
+        header("Location: /ProjetWeb-1/");
+        exit();
     }
 }
+
 
 function signup($userModel) {
     $firstname = $_POST['prenom'] ?? '';
@@ -89,8 +105,10 @@ function signup($userModel) {
 
 
 function logout() {
-    session_destroy();
+    session_start(); // Démarrer la session pour pouvoir accéder à $_SESSION
+    session_destroy(); // Détruire toutes les données de la session
+
+    // Rediriger vers la page d'accueil après déconnexion
     header('Location: /ProjetWeb-1/');
     exit;
 }
-?>
