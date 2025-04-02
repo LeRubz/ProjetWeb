@@ -34,7 +34,7 @@ function login($userModel) {
     // Vérification que l'email est valide
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Email invalide.";
-        header("Location: /ProjetWeb-1/");
+        header("Location: /ProjetWeb/");
         exit();
     }
 
@@ -51,11 +51,11 @@ function login($userModel) {
             'adminstatus' => $user['ADMIN_STATUS']
         ];
         $_SESSION['success'] = "Connexion réussie, bienvenue " . $user['FIRSTNAME'] . " !";
-        header("Location: /ProjetWeb-1/"); // Redirection après connexion
+        header("Location: /ProjetWeb/"); // Redirection après connexion
         exit();
     } else {
         $_SESSION['error'] = "Identifiants incorrects.";
-        header("Location: /ProjetWeb-1/");
+        header("Location: /ProjetWeb/");
         exit();
     }
 }
@@ -101,7 +101,7 @@ function signup($userModel) {
             
             setTimeout(() => {
                 popup.remove();
-                window.location.href = '/ProjetWeb-1/'; // Redirection après suppression du popup
+                window.location.href = '/ProjetWeb/'; // Redirection après suppression du popup
             }, 3000);
         });
     </script>";
@@ -113,6 +113,6 @@ function logout() {
     session_destroy(); // Détruire toutes les données de la session
 
     // Rediriger vers la page d'accueil après déconnexion
-    header('Location: /ProjetWeb-1/');
+    header('Location: /ProjetWeb/');
     exit;
 }
