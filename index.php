@@ -10,7 +10,8 @@ use App\Controllers\EntreprisesController;
 use App\Controllers\ProfilController;
 use App\Controllers\OfferController;
 use App\Controllers\WishlistController;
-use App\Controllers\StaticController; // <-- Nouveau
+use App\Controllers\StaticController;
+use App\Controllers\DashboardController;
 
 // Créer une instance de Twig
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -47,6 +48,12 @@ switch ($uri) {
         $controller->updateProfil();
         break;
 
+    case 'Profil/delete':
+        $controller = new ProfilController($twig);
+        $controller->deleteProfil();
+        break;
+        
+
     case 'Offer':
         $controller = new OfferController($twig);
         $controller->OfferPage($user);
@@ -56,6 +63,28 @@ switch ($uri) {
         $controller = new WishlistController($twig);
         $controller->WishlistPage($user);
         break;
+
+    case 'Dashboard':
+        $controller = new DashboardController($twig);
+        $controller->showDashboard();
+        break;
+        
+    case 'Dashboard/delete':
+        $controller = new DashboardController($twig);
+        $controller->deleteUser($_POST['id']);
+        break;
+        
+        
+    case 'Dashboard/update':
+        $controller = new DashboardController($twig);
+        $controller->updateUser();
+        break;
+
+    case 'Dashboard/add':
+        $controller = new App\Controllers\DashboardController($twig);
+        $controller->addUser();
+        break;
+        
 
     // ✅ Routes statiques :
     case 'aide':

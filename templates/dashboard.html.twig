@@ -1,0 +1,68 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block recherche %}{% endblock %}
+
+{% block content %}
+<main class="dashboard-container">
+    <h1>👥 Gestion des utilisateurs</h1>
+
+    <h2>➕ Ajouter un nouveau compte</h2>
+    <form method="POST" action="index.php?uri=Dashboard/add" class="add-user-form">
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="tel" placeholder="Téléphone" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <select name="adminstatus" required>
+            <option value="0">Utilisateur</option>
+            <option value="1">Administrateur</option>
+            <option value="2">Super Admin</option>
+        </select>
+        <button type="submit">Créer</button>
+    </form>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <form method="POST" action="index.php?uri=Dashboard/update">
+                    <input type="hidden" name="id" value="{{ user.ID_USER }}">
+                    <td>{{ user.ID_USER }}</td>
+                    <td><input type="text" name="nom" value="{{ user.NAME }}"></td>
+                    <td><input type="text" name="prenom" value="{{ user.FIRSTNAME }}"></td>
+                    <td><input type="email" name="email" value="{{ user.EMAIL }}"></td>
+                    <td><input type="text" name="tel" value="{{ user.TEL }}"></td>
+                    <td>
+                        <select name="adminstatus">
+                            <option value="0" {% if user.ADMIN_STATUS == 0 %}selected{% endif %}>Utilisateur</option>
+                            <option value="1" {% if user.ADMIN_STATUS == 1 %}selected{% endif %}>Administrateur</option>
+                            <option value="2" {% if user.ADMIN_STATUS == 2 %}selected{% endif %}>Super Admin</option>
+                        </select>
+                    </td>
+                    <td class="action-buttons">
+                        <button type="submit" title="Enregistrer">💾</button>
+                </form>
+                <form method="POST" action="index.php?uri=Dashboard/delete" onsubmit="return confirm('Supprimer ce compte ?')">
+                    <input type="hidden" name="id" value="{{ user.ID_USER }}">
+                    <button type="submit" title="Supprimer">🗑</button>
+                </form>
+                    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
