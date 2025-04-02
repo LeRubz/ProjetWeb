@@ -47,7 +47,8 @@ function login($userModel) {
         $_SESSION['user'] = [
             'id' => $user['ID'],
             'prenom' => $user['FIRSTNAME'],
-            'email' => $user['EMAIL']
+            'email' => $user['EMAIL'],
+            'adminstatus' => $user['ADMIN_STATUS']
         ];
         $_SESSION['success'] = "Connexion réussie, bienvenue " . $user['FIRSTNAME'] . " !";
         header("Location: /ProjetWeb-1/"); // Redirection après connexion
