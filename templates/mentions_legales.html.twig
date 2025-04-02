@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InternHub | Mentions légales</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>  
-    <header>
-        <div class="logo">
-            <img src="images/LOGO_SFB2.png" alt="Logo Internhub">
-        </div>
-        <nav>
-            <img src="images/loupe.png" alt="Search" class="search-icon-navbar" />
-            <a href="index.html">Accueil</a>   
-            <a href="offres.html">Offres</a>
-            <a href="entreprises.html">Entreprises</a>
-            <a href="wishlist.html">Wishlist</a>    
-        </nav>
-        <div class="auth">
-            <a href="login.html">Login</a> | <a href="signin.html">Sign in</a>
-        </div>
-    </header>
+{% extends 'layout.html.twig' %}
 
+{% block title %}Mentions legales{% endblock %}
+
+{% block content %}
     <main class="mentions-page">
         <h1>Mentions légales</h1>
 
@@ -69,27 +49,5 @@
             Pour toute question ou réclamation, vous pouvez nous contacter à : <a href="mailto:support@internhub.fr">support@internhub.fr</a>
         </p>
     </main>
-
-    <footer>
-        <div class="footer-left">
-            <a href="mentions_legales.html">© 2025 Internhub</a>
-            <a href="cgu.html">Conditions</a>
-            <a href="cookies.html">Cookies</a>
-            <a href="aide.html">Aide</a>
-            <a href="apropos.html">À Propos</a>
-        </div>
-        <div class="footer-right">
-            <p>Nous suivre sur :</p>
-            <div class="socials">
-                <img src="images/LOGO_Facebook.png" alt="Facebook">
-                <img src="images/LOGO_X.png" alt="X/Twitter">
-                <img src="images/LOGO_Tiktok.png" alt="TikTok">
-                <img src="images/LOGO_Instagram.png" alt="Instagram">
-                <img src="images/LOGO_Linkedin.png" alt="LinkedIn">
-            </div>
-        </div>
-    </footer>
-
-    <script src="scripts.js"></script>
-</body>
-</html>
+    {% endblock %}
+    
