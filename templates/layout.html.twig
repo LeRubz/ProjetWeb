@@ -13,7 +13,6 @@
             </div>
         </div>
     
-        <!-- NAVIGATION DESKTOP -->
         <nav class="desktop-nav">
             <img src="images/loupe.png" alt="Search" class="search-icon-navbar" />
             <a href="index.php" class="active">Accueil</a>   
@@ -22,11 +21,17 @@
             <a href="index.php?uri=Wishlist">Wishlist</a>
         </nav>
     
-        <!-- Partie AUTH visible sur desktop uniquement -->
         <div class="auth desktop-auth">
-            <a href="#" onclick="openModal('connexionModal')">Login</a> |
-            <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+            <?php if (isset($_SESSION['user'])): ?>
+                <span>Bienvenue, <strong><?= htmlspecialchars($_SESSION['user']['prenom']) ?></strong></span> |
+                <a href="/ProjetWeb-1/LoginoutController.php?action=logout">Logout</a>
+            <?php else: ?>
+                <a href="#" onclick="openModal('connexionModal')">Login</a> |
+                <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+            <?php endif; ?>
         </div>
+
+
 
     
         <!-- MENU BURGER (visible uniquement sur mobile) -->
@@ -59,7 +64,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('connexionModal')">&times;</span>
                 <h2>Connexion</h2>
-                <form method="POST" action="src/Controller/loginoutController.php">
+                <form method="POST" action="src/Controllers/loginoutController.php">
                     <input type="hidden" name="action" value="login">
                     <input type="email" name="email" placeholder="Email" required><br>
                     <input type="password" name="mdp" placeholder="Mot de passe" required><br>
@@ -73,7 +78,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal('inscriptionModal')">&times;</span>
                 <h2>Inscription</h2>
-                <form method="POST" action="src/Controller/loginoutController.php">
+                <form method="POST" action="src/Controllers/loginoutController.php">
                     <input type="hidden" name="action" value="signup">
                     <input type="text" name="prenom" placeholder="Prénom" required><br>
                     <input type="text" name="nom" placeholder="Nom" required><br>
@@ -85,6 +90,7 @@
             </div>
         </div>
     </header>
+{% block recherche %}
 <recherche>
     <div class="floating-search-bar" id="floatingSearchBar">
         <div class="search-bar">
@@ -108,6 +114,7 @@
         </div>
     </section>
 </recherche>
+{% endblock %}
 
      <main>
      {% block content %}{% endblock %}
