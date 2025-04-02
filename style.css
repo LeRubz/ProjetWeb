@@ -1483,3 +1483,129 @@ blockquote {
       display: flex;
   }
 }
+
+.wishlist-page {
+  max-width: 1000px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
+
+.wishlist-page h1 {
+  text-align: center;
+  font-size: 30px;
+  color: #1b0844;
+  margin-bottom: 40px;
+}
+
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.wishlist-card {
+  position: relative;
+  background-color: #ebe3fc;; /* Violet clair */
+  border-radius: 12px;
+  padding: 30px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 6px 6px 0 #cdbdef; /* Ombre violette */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  border: solid #896fbf 1px;
+}
+
+.wishlist-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.wishlist-text {
+  flex: 1;
+  text-align: left;
+}
+
+.wishlist-text h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #1b0844;
+}
+
+.wishlist-text p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+}
+
+.wishlist-entreprise {
+  font-size: 14px;
+  color: #1b0844;
+  margin-top: 15px;
+}
+
+.wishlist-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centré verticalement */
+  text-align: center;
+  min-width: 100px; /* réduit un peu la largeur */
+}
+
+.wishlist-logo img {
+  height: 70px;
+  margin: 20px 50px;}
+
+.remove-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.remove-btn {
+  background-color: #896fbf;
+  box-shadow: 2px 2px 0 #cac4d8;
+  color: #1b0844;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: background-color 0.2s ease;
+}
+
+.remove-btn:hover {
+  background-color: #3d2c78;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wishlist-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wishlist-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wishlist-logo {
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .wishlist-logo img {
+    height: 60px;
+  }
+}
