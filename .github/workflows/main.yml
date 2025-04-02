@@ -3,7 +3,7 @@ name: Deploy to Azure VM
 on:
   push:
     branches:
-      - main  # Change to the branch you want to deploy from (e.g., 'master', 'main')
+      - main
 
 jobs:
   deploy:
@@ -20,6 +20,7 @@ jobs:
       - name: Deploy to Azure VM
         run: |
           ssh -o StrictHostKeyChecking=no azureuser@20.123.200.110 << 'EOF'
+            set -e  # Quitter en cas d'erreur
             cd /var/www/html/ProjetWeb
             git pull origin main
             composer install --no-dev --optimize-autoloader
