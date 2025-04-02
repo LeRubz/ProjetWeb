@@ -28,11 +28,11 @@ function login($userModel) {
     $user = $userModel->findByemail($email);
     if ($user && password_verify($mdp, $user['password'])) {
         $_SESSION['user'] = $user['id'];
-        header('Location: /ProjetWeb-1/index.html');
+        header('Location: /ProjetWeb-1/');
         exit;
     } else {
         $_SESSION['error'] = 'Identifiants incorrects';
-        header('Location: /ProjetWeb-1/index.html');
+        header('Location: /ProjetWeb-1/');
         exit;
     }
 }
@@ -60,7 +60,7 @@ function signup($userModel) {
         $_SESSION['type'] = "error";
     }
 
-    header('Location: /ProjetWeb-1/index.html');
+    header('Location: /ProjetWeb-1/');
     exit;
 }
 
