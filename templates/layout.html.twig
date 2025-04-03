@@ -15,11 +15,13 @@
     
         <nav class="desktop-nav">
             <img src="images/loupe.png" alt="Search" class="search-icon-navbar" />
-            <a href="index.php" class="active">Accueil</a>   
-            <a href="index.php?uri=Offer">Offres</a>
-            <a href="index.php?uri=Companies">Entreprises</a>
-            <a href="index.php?uri=Wishlist">Wishlist</a>
+            <a href="index.php" class="{{ currentUri == '' or currentUri == '/' ? 'active' : '' }}">Accueil</a>   
+            <a href="index.php?uri=Offer" class="{{ currentUri == 'Offer' ? 'active' : '' }}">Offres</a>
+            <a href="index.php?uri=Companies" class="{{ currentUri == 'Companies' ? 'active' : '' }}">Entreprises</a>
+            <a href="index.php?uri=Wishlist" class="{{ currentUri == 'Wishlist' ? 'active' : '' }}">Wishlist</a>
+
         </nav>
+
 
         <div class="auth desktop-auth">
             {% if sessionUser %}

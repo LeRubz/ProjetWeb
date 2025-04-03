@@ -19,6 +19,9 @@ $twig = new \Twig\Environment($loader, [
     'debug' => true
 ]);
 
+$twig->addGlobal('currentUri', $_GET['uri'] ?? '');
+
+
 // Vérifier si l'utilisateur est connecté
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null; // On récupère l'utilisateur si connecté, sinon $user sera null
 
