@@ -64,7 +64,7 @@
                     <p><strong>Salaire :</strong> {{ offer.SALARY }} €</p>
                     <p><strong>Date de publication :</strong> {{ offer.PUB_DATE|date("d/m/Y") }}</p>
 
-                    <button class="cta-button">Postuler</button>
+                    <button onclick="postuler({{ offer.ID_OFFER }})" class="cta-button">Postuler</button>
                 </div>
             </div>
         {% endfor %}
