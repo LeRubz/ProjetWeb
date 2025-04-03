@@ -51,11 +51,45 @@ class OfferModel {
         $stmt->execute($params);
         return $stmt->fetchAll();
     }
-    
-    
-    
-    
-    
-    
+
+    // Récupérer toutes les entreprises uniques
+public function getAllCompanies() {
+    $stmt = $this->pdo->query("SELECT DISTINCT c.NAME 
+                               FROM company c 
+                               JOIN offer o ON o.ID_COMPANY = c.ID_COMPANY");
+    return $stmt->fetchAll(PDO::FETCH_COLUMN); // Récupère uniquement les noms
+}
+
+// Récupérer tous les domaines uniques
+public function getAllDomains() {
+    $stmt = $this->pdo->query("SELECT DISTINCT DOMAIN_ACT FROM offer");
+    return $stmt->fetchAll(PDO::FETCH_COLUMN); // Récupère uniquement les domaines
+}
+
+
+public function getOffersByFilters($entreprise = null, $domaine = null) {
+    $sql = "SELECT o.*, c.NAME AS COMPANY_NAME
+            FROM offer o
+            JOIN company c ON o.ID_COMPANY = c.ID_COMPANY
+            WHERE 1=1";
+
+    $params = [];
+
+    if ($entreprise) {
+        $sql .= " AND c.NAME = ?";
+        $params[] = $entreprise;
+    }
+
+    if ($domaine) {
+        $sql .= " AND o.DOMAIN_ACT = ?";
+        $params[] = $domaine;
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
     
 }
