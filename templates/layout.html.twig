@@ -127,29 +127,53 @@
 {% block recherche %}
 <recherche>
     <div class="floating-search-bar" id="floatingSearchBar">
-        <div class="search-bar">
-            <img src="images/loupe.png" alt="Recherche" class="icon">
-            <input type="text" placeholder="Intitulé de poste, mots clés, ..." class="search-input">
-            <div class="separator"></div>
-            <img src="images/gps.png" alt="GPS" class="icon">
-            <input type="text" class="location-input" placeholder="Ville ou code postal">
-            <button>Rechercher</button>
-        </div>
+        <form method="GET" action="index.php" class="search-bar">
+    <input type="hidden" name="uri" value="Search">
+    <img src="images/loupe.png" alt="Recherche" class="icon">
+    <input type="text" name="q" placeholder="Intitulé de poste, mots clés, entreprise..." class="search-input">
+    <div class="separator"></div>
+    <img src="images/gps.png" alt="GPS" class="icon">
+    <input type="text" name="location" class="location-input" placeholder="Ville ou code postal">
+    <button type="submit">Rechercher</button>
+</form>
+
     </div>
 
     <section class="search-section">
-        <div class="search-bar">
-            <img src="images/loupe.png" alt="Recherche" class="icon">
-            <input type="text" placeholder="Intitulé de poste, mots clés, ..." class="search-input">
-            <div class="separator"></div>
-            <img src="images/gps.png" alt="GPS" class="icon">
-            <input type="text" class="location-input" placeholder="Ville ou code postal">
-            <button>Rechercher</button>
-        </div>
+        <form method="GET" action="index.php" class="search-bar">
+    <input type="hidden" name="uri" value="Search">
+    <img src="images/loupe.png" alt="Recherche" class="icon">
+    <input type="text" name="q" placeholder="Intitulé de poste, mots clés, entreprise..." class="search-input">
+    <div class="separator"></div>
+    <img src="images/gps.png" alt="GPS" class="icon">
+    <input type="text" name="location" class="location-input" placeholder="Ville ou code postal">
+    <button type="submit">Rechercher</button>
+</form>
+
     </section>
 </recherche>
 {% endblock %}
 
+{% if app.request.get('noresult') %}
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const popup = document.createElement('div');
+        popup.textContent = "🔍 Aucun résultat trouvé.";
+        popup.style.position = 'fixed';
+        popup.style.bottom = '30px';
+        popup.style.right = '30px';
+        popup.style.background = '#896fbf';
+        popup.style.color = 'white';
+        popup.style.padding = '12px 20px';
+        popup.style.borderRadius = '12px';
+        popup.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+        popup.style.zIndex = 9999;
+        document.body.appendChild(popup);
+
+        setTimeout(() => popup.remove(), 4000); // supprime après 4s
+    });
+</script>
+{% endif %}
      <main>
      {% block content %}{% endblock %}
      </main>
