@@ -81,6 +81,11 @@
                         <a href="index.php?uri=Dashboard" class="btn-dashboard">📊 Accéder au Dashboard</a>
                     </div>
                 {% endif %}
+                {% if user.ADMIN_STATUS == '1' %}
+                    <div class="pilote-dashboard-link" style="margin-top: 20px;">
+                        <a href="index.php?uri=Dashboard-Company" class="btn-dashboard">📊 Accéder au Dashboard des entreprises</a>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>

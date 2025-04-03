@@ -1,0 +1,92 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Dashboard Entreprises{% endblock %}
+
+{% block recherche %}{% endblock %}
+
+{% block content %}
+<main class="dashboard-container">
+    <div class="header">
+        <h1>🏢 Gestion des entreprises</h1>
+        <h2>➕ Ajouter une nouvelle entreprise</h2>
+    </div>
+
+    <form method="POST" action="index.php?uri=Dashboard/addCompany" enctype="multipart/form-data" class="add-company-form">
+        <input type="text" name="name" placeholder="Nom de l'entreprise" required>
+        <textarea name="descr" placeholder="Description" required></textarea>
+        <input type="number" name="nb_offer" placeholder="Nombre d'offres" required>
+        <input type="number" name="middle_ages" placeholder="Âge moyen des employés" required>
+        <input type="text" name="industry" placeholder="Secteur d'activité" required>
+        <input type="number" name="employees" placeholder="Nombre d'employés" required>
+
+        <!-- Champs pour l'adresse -->
+        <input type="text" name="country" placeholder="Pays" required>
+        <input type="text" name="postal_code" placeholder="Code postal" required>
+        <input type="text" name="city" placeholder="Ville" required>
+        <input type="text" name="road" placeholder="Rue" required>
+        <input type="number" name="num" placeholder="Numéro de rue" required>
+
+        <label for="logo">Logo (PNG, JPG) :</label>
+        <input type="file" name="logo" id="logo" accept="image/png, image/jpeg" required>
+
+        <label for="banner">Bannière (PNG, JPG) :</label>
+        <input type="file" name="banner" id="banner" accept="image/png, image/jpeg" required>
+
+        <button type="submit">Créer</button>
+    </form>
+
+    <div class="companies-list">
+        <h2>🗂️ Liste des entreprises</h2>
+
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Offres</th>
+                    <th>Âge moyen</th>
+                    <th>Secteur</th>
+                    <th>Employés</th>
+                    <th>Ville</th>
+                    <th>Logo</th>
+                    <th>Bannière</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for company in companies %}
+                <tr>
+                    <form method="POST" action="index.php?uri=Dashboard/updateCompany" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{{ company.id }}">
+                        <td>{{ company.id }}</td>
+                        <td><input type="text" name="name" value="{{ company.name }}"></td>
+                        <td><textarea name="descr">{{ company.descr }}</textarea></td>
+                        <td><input type="number" name="nb_offer" value="{{ company.nb_offer }}"></td>
+                        <td><input type="number" name="middle_ages" value="{{ company.middle_ages }}"></td>
+                        <td><input type="text" name="industry" value="{{ company.industry }}"></td>
+                        <td><input type="number" name="employees" value="{{ company.employees }}"></td>
+                        <td><input type="text" name="city" value="{{ company.city }}"></td>
+                        <td>
+                            <img src="images/logo/{{ company.logo }}" alt="Logo {{ company.name }}" class="logo-preview">
+                            <input type="file" name="logo" accept="image/png, image/jpeg">
+                        </td>
+                        <td>
+                            <img src="images/banner/{{ company.banner }}" alt="Bannière {{ company.name }}" class="banner-preview">
+                            <input type="file" name="banner" accept="image/png, image/jpeg">
+                        </td>
+                        <td class="action-buttons">
+                            <button type="submit" title="Enregistrer">💾</button>
+                    </form>
+                    <form method="POST" action="index.php?uri=Dashboard/deleteCompany" onsubmit="return confirm('Supprimer cette entreprise ?')">
+                        <input type="hidden" name="id" value="{{ company.id }}">
+                        <button type="submit" title="Supprimer">🗑</button>
+                    </form>
+                        </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

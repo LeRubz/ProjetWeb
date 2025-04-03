@@ -12,6 +12,7 @@ use App\Controllers\OfferController;
 use App\Controllers\WishlistController;
 use App\Controllers\StaticController;
 use App\Controllers\DashboardController;
+use App\Controllers\DashboardCompanyController;
 
 // Créer une instance de Twig
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -95,8 +96,6 @@ switch ($uri) {
         $controller->addUser();
         break;
         
-
-    // ✅ Routes statiques :
     case 'aide':
         $controller = new StaticController($twig);
         $controller->aide();
@@ -120,6 +119,36 @@ switch ($uri) {
     case 'mentions':
         $controller = new StaticController($twig);
         $controller->mentions();
+        break;
+
+    // Afficher le dashboard des entreprises
+    case 'Dashboard-Company':
+        $controller = new App\Controllers\DashboardCompanyController($twig);
+        $controller->showDashboard();
+        break;
+
+    // Ajouter une entreprise
+    case 'Dashboard/addCompany':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller = new App\Controllers\DashboardCompanyController($twig);
+            $controller->addCompany();
+        }
+        break;
+
+    // Mettre à jour une entreprise
+    case 'Dashboard/updateCompany':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller = new App\Controllers\DashboardCompanyController($twig);
+            $controller->updateCompany();
+        }
+        break;
+
+    // Supprimer une entreprise
+    case 'Dashboard/deleteCompany':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller = new App\Controllers\DashboardCompanyController($twig);
+            $controller->deleteCompany($_POST['id']);
+        }
         break;
     
         case 'Search':
