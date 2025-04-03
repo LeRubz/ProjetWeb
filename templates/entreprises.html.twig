@@ -9,9 +9,9 @@
 
         {% for company in companies %}
             <div class="entreprise-card-v2">
-                <img src="/images/{{ company.banner }}" alt="{{ company.name }} bannière" class="banner-img">
+                <img src="{{ company.banner_path }}" alt="{{ company.name }} bannière" class="banner-img">
                 <div class="logo-entreprise-mini">
-                    <img src="/images/{{ company.logo }}" alt="Logo {{ company.name }}">
+                    <img src="{{ company.logo_path }}" alt="Logo {{ company.name }}">
                 </div>
                 <div class="contenu-entreprise-card">
                     <h3>{{ company.name }} recrutement</h3>
@@ -27,6 +27,8 @@
                 </div>
             </div>
         {% endfor %}
+
+
 
     </div>
 </section>

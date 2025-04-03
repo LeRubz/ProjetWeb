@@ -2,7 +2,6 @@
 namespace App\Controllers;
 
 use App\Models\EntrepriseModel;
-use Twig\Environment;
 
 class EntreprisesController extends Controller 
 {
@@ -12,11 +11,10 @@ class EntreprisesController extends Controller
 
     // Méthode pour afficher la liste des entreprises
     public function EntreprisesPage() {
-        // On récupère toutes les entreprises via le modèle
+        // Récupérer toutes les entreprises avec leurs fichiers sécurisés
         $companies = $this->model1->getAllEntreprises();
         
         // Passer les données à la vue
         $this->render('entreprises.html.twig', ['companies' => $companies]);
     }
-    
 }

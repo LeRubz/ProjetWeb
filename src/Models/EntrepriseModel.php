@@ -12,8 +12,6 @@ class EntrepriseModel {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }
-
-    // Récupérer toutes les entreprises
     public function getAllEntreprises() {
         $stmt = $this->pdo->query("
             SELECT 
@@ -24,16 +22,33 @@ class EntrepriseModel {
                 c.MIDDLE_AGES AS middle_ages, 
                 c.INDUSTRY AS industry, 
                 c.EMPLOYEES AS employees, 
-                c.LOGO AS logo, 
-                c.BANNER AS banner, 
+                up_logo.NOM AS logo_name,  -- Récupérer le nom du fichier logo
+                up_logo.EXTENSION AS logo_extension,  -- Récupérer l'extension du logo
+                up_banner.NOM AS banner_name,  -- Récupérer le nom du fichier bannière
+                up_banner.EXTENSION AS banner_extension,  -- Récupérer l'extension de la bannière
                 a.CITY AS city 
             FROM company c
             LEFT JOIN address a ON c.ID_ADDRESS = a.ID_ADDRESS
+            LEFT JOIN upload up_logo ON c.LOGO = up_logo.ID_UPLOAD -- Jointure avec la table UPLOAD pour le logo
+            LEFT JOIN upload up_banner ON c.BANNER = up_banner.ID_UPLOAD -- Jointure avec la table UPLOAD pour la bannière
         ");
-        return $stmt->fetchAll();
+        $companies = $stmt->fetchAll();
+        
+        // Ajouter le chemin complet pour les logos et bannières
+        foreach ($companies as &$company) {
+            // Ajoute le chemin complet pour les logos
+            $company['logo_path'] = 'images/logo/' . $company['logo_name'] . '.' . $company['logo_extension'];
+            
+            // Ajoute le chemin complet pour les bannières
+            $company['banner_path'] = 'images/banner/' . $company['banner_name'] . '.' . $company['banner_extension'];
+        }
+
+        return $companies;
     }
+
+
     
-    // Récupérer une entreprise par son ID
+    // Récupérer une entreprise par son ID avec les fichiers sécurisés
     public function getEntrepriseById($id) {
         $stmt = $this->pdo->prepare("
             SELECT 
@@ -44,12 +59,16 @@ class EntrepriseModel {
                 c.MIDDLE_AGES AS middle_ages, 
                 c.INDUSTRY AS industry, 
                 c.EMPLOYEES AS employees, 
-                c.LOGO AS logo, 
-                c.BANNER AS banner, 
-                a.CITY AS city 
+                a.CITY AS city,
+                l.HASH AS logo_hash, 
+                l.EXTENSION AS logo_ext, 
+                b.HASH AS banner_hash, 
+                b.EXTENSION AS banner_ext
             FROM company c
             LEFT JOIN address a ON c.ID_ADDRESS = a.ID_ADDRESS
-            WHERE c.id_company = ?
+            LEFT JOIN upload l ON c.LOGO = l.ID_UPLOAD
+            LEFT JOIN upload b ON c.BANNER = b.ID_UPLOAD
+            WHERE c.ID_COMPANY = ?
         ");
         $stmt->execute([$id]);
         return $stmt->fetch();
