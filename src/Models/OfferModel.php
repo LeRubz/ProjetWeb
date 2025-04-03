@@ -25,7 +25,7 @@ class OfferModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getFilteredOffers($entreprise = null, $domaine = null) {
+    public function getFilteredOffers($q = null, $location = null) {
         $sql = "SELECT o.*, c.NAME AS COMPANY_NAME
                 FROM offer o
                 JOIN company c ON o.ID_COMPANY = c.ID_COMPANY
@@ -33,20 +33,25 @@ class OfferModel {
     
         $params = [];
     
-        if ($entreprise) {
-            $sql .= " AND c.NAME = ?";
-            $params[] = $entreprise;
+        if ($q) {
+            $sql .= " AND (o.TITRE LIKE ? OR o.DESCR LIKE ?)";
+            $params[] = '%' . $q . '%';
+            $params[] = '%' . $q . '%';
         }
     
-        if ($domaine) {
-            $sql .= " AND o.DOMAIN_ACT = ?";
-            $params[] = $domaine;
+        if ($location) {
+            $sql .= " AND c.ID_ADDRESS IN (
+                SELECT ID_ADDRESS FROM address WHERE CITY LIKE ? OR POSTAL_CODE LIKE ?
+            )";
+            $params[] = '%' . $location . '%';
+            $params[] = '%' . $location . '%';
         }
     
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
+    
     
     
     

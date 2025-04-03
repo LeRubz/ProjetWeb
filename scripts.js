@@ -134,3 +134,29 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
         
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('noresult')) {
+                showPopup("Aucun résultat trouvé.");
+        
+                // Supprime "noresult" de l'URL sans recharger la page
+                urlParams.delete('noresult');
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                window.history.replaceState({}, '', newUrl);
+            }
+        });
+        
+        function showPopup(message) {
+            const popup = document.createElement('div');
+            popup.className = 'popup-notification show';
+            popup.innerText = message;
+        
+            document.body.appendChild(popup);
+        
+            setTimeout(() => {
+                popup.classList.remove('show');
+                setTimeout(() => popup.remove(), 400);
+            }, 3000);
+        }
+        
+        

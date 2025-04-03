@@ -21,6 +21,10 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addGlobal('currentUri', $_GET['uri'] ?? '');
 
+$twig->addGlobal('app', (object)[
+    'request' => (object)$_GET
+]);
+
 
 // Vérifier si l'utilisateur est connecté
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null; // On récupère l'utilisateur si connecté, sinon $user sera null
@@ -117,6 +121,37 @@ switch ($uri) {
         $controller = new StaticController($twig);
         $controller->mentions();
         break;
+    
+        case 'Search':
+            $query = $_GET['q'] ?? '';
+            $location = $_GET['location'] ?? '';
+        
+            $offerModel = new \App\Models\OfferModel();
+            $entrepriseModel = new \App\Models\EntrepriseModel();
+        
+            $matchedOffers = $offerModel->getFilteredOffers($query, $location);
+            $matchedCompanies = $entrepriseModel->searchCompanies($query, $location);
+        
+            if (!empty($matchedOffers) && (empty($matchedCompanies) || count($matchedOffers) >= count($matchedCompanies))) {
+                header("Location: index.php?uri=Offer&q=" . urlencode($query) . "&location=" . urlencode($location));
+                exit;
+            } elseif (!empty($matchedCompanies)) {
+                header("Location: index.php?uri=Companies&q=" . urlencode($query) . "&location=" . urlencode($location));
+                exit;
+            } else {
+                // Redirige vers la page précédente avec un paramètre pour afficher le pop-up
+                // Récupérer l'URL précédente sans ses éventuels anciens paramètres
+                $ref = strtok($_SERVER['HTTP_REFERER'], '?');
+                // Rediriger vers la même page avec le paramètre noresult=1
+                header("Location: {$ref}?noresult=1");
+
+                exit;
+            }
+            
+            break;
+        
+        
+        
         
 
     default:
