@@ -9,8 +9,11 @@
 <header>
         <div class="header-left">
             <div class="logo">
-                <img src="images/LOGO_SFB2.png" alt="Logo Internhub">
+                <a href="index.php">
+                    <img src="images/LOGO_SFB2.png" alt="Logo Internhub">
+                </a>
             </div>
+
         </div>
     
         <nav class="desktop-nav">
@@ -58,15 +61,25 @@
     
         <div class="mobile-nav" id="mobileNav">
             <nav>
-                <a href="Accueil" class="active">Accueil</a>   
-                <a href="Offres">Offres</a>
-                <a href="Entreprises">Entreprises</a>
-                <a href="Wishlist">Wishlist</a>    
+                <a href="index.php" class="{{ currentUri == '' or currentUri == '/' ? 'active' : '' }}">Accueil</a>
+                <a href="index.php?uri=Offer" class="{{ currentUri == 'Offer' ? 'active' : '' }}">Offres</a>
+                <a href="index.php?uri=Companies" class="{{ currentUri == 'Companies' ? 'active' : '' }}">Entreprises</a>
+                <a href="index.php?uri=Wishlist" class="{{ currentUri == 'Wishlist' ? 'active' : '' }}">Wishlist</a>
+
                 <div class="auth-mobile">
-                    <a href="#" onclick="openModal('connexionModal')">Login</a>
-                    <span>|</span>
-                    <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+                    {% if sessionUser %}
+                        <a href="index.php?uri=Profil">{{ sessionUser.prenom }}</a> |
+                        <form method="post" action="src/Controllers/loginoutController.php" style="display:inline;">
+                            <input type="hidden" name="action" value="logout">
+                            <button class="btn-logout-navbar" type="submit">🔒 Se déconnecter</button>
+                        </form>
+                    {% else %}
+                        <a href="#" onclick="openModal('connexionModal')">Login</a>
+                        <span>|</span>
+                        <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
+                    {% endif %}
                 </div>
+
             </nav>
         </div>
             </nav>
