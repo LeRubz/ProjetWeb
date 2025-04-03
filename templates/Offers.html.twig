@@ -10,32 +10,41 @@
         <!-- Filtres -->
         <section class="filtres-offres">
             <h2>Filtrer les offres</h2>
-            <div class="filtres">
-                <select class="offre-card">
-                    <option selected disabled>Entreprise</option>
-                    <option>Tech Solutions</option>
-                    <option>Design Pro</option>
-                    <option>IT Consulting</option>
-                    <option>Data Analytics</option>
-                    <option>HelpDesk Corp</option>
-                </select>
-                <select class="offre-card">
-                    <option selected disabled>Domaine</option>
-                    <option>Informatique</option>
-                    <option>Design</option>
-                    <option>Gestion</option>
-                    <option>Big Data</option>
-                    <option>IT Support</option>
-                </select>
+            <form method="GET" action="index.php">
+                <input type="hidden" name="uri" value="Offer">
+                <div class="filtres">
+                    <select name="entreprise" class="offre-card">
+                        <option disabled {% if not entreprise %}selected{% endif %}>Entreprise</option>
+                        <option value="Tech Solutions" {% if entreprise == 'Tech Solutions' %}selected{% endif %}>Tech Solutions</option>
+                        <option value="Design Pro" {% if entreprise == 'Design Pro' %}selected{% endif %}>Design Pro</option>
+                        <option value="IT Consulting" {% if entreprise == 'IT Consulting' %}selected{% endif %}>IT Consulting</option>
+                        <option value="Data Analytics" {% if entreprise == 'Data Analytics' %}selected{% endif %}>Data Analytics</option>
+                        <option value="HelpDesk Corp" {% if entreprise == 'HelpDesk Corp' %}selected{% endif %}>HelpDesk Corp</option>
+                    </select>
 
-            </div>
+                    <select name="domaine" class="offre-card">
+                        <option disabled {% if not domaine %}selected{% endif %}>Domaine</option>
+                        <option value="Informatique" {% if domaine == 'Informatique' %}selected{% endif %}>Informatique</option>
+                        <option value="Design" {% if domaine == 'Design' %}selected{% endif %}>Design</option>
+                        <option value="Gestion" {% if domaine == 'Gestion' %}selected{% endif %}>Gestion</option>
+                        <option value="Big Data" {% if domaine == 'Big Data' %}selected{% endif %}>Big Data</option>
+                        <option value="IT Support" {% if domaine == 'IT Support' %}selected{% endif %}>IT Support</option>
+                    </select>
+
+                    <button type="submit" class="cta-button">Filtrer</button>
+                    <a href="index.php?uri=Offer" class="cta-button" style="background-color: #bbb; color: #000;">Réinitialiser</a>
+                </div>
+            </form>
         </section>
+
+
 
         <!-- Liste des offres -->
         <section class="liste-global-offres">
             {% for offer in offers %}
                 <div class="offre-card">
                     <h3>{{ offer.TITRE }}</h3>
+                    <p><strong>Entreprise :</strong> {{ offer.COMPANY_NAME }}</p>
                     <p>{{ offer.DOMAIN_ACT }} - {{ offer.DESCR|length > 60 ? offer.DESCR|slice(0, 60) ~ '...' : offer.DESCR }}</p>
                     <div class="tags">
                         <span class="tag">{{ offer.CONTRACT }}</span>

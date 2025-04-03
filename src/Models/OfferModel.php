@@ -24,4 +24,33 @@ class OfferModel {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getFilteredOffers($entreprise = null, $domaine = null) {
+        $sql = "SELECT o.*, c.NAME AS COMPANY_NAME
+                FROM offer o
+                JOIN company c ON o.ID_COMPANY = c.ID_COMPANY
+                WHERE 1=1";
+    
+        $params = [];
+    
+        if ($entreprise) {
+            $sql .= " AND c.NAME = ?";
+            $params[] = $entreprise;
+        }
+    
+        if ($domaine) {
+            $sql .= " AND o.DOMAIN_ACT = ?";
+            $params[] = $domaine;
+        }
+    
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+    
+    
+    
+    
 }
