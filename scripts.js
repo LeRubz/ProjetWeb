@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         });
-        
+
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('noresult')) {
@@ -158,5 +158,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => popup.remove(), 400);
             }, 3000);
         }
-        
         
