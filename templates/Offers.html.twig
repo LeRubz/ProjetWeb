@@ -14,21 +14,19 @@
                 <input type="hidden" name="uri" value="Offer">
                 <div class="filtres">
                     <select name="entreprise" class="offre-card">
-                        <option disabled {% if not entreprise %}selected{% endif %}>Entreprise</option>
-                        <option value="Tech Solutions" {% if entreprise == 'Tech Solutions' %}selected{% endif %}>Tech Solutions</option>
-                        <option value="Design Pro" {% if entreprise == 'Design Pro' %}selected{% endif %}>Design Pro</option>
-                        <option value="IT Consulting" {% if entreprise == 'IT Consulting' %}selected{% endif %}>IT Consulting</option>
-                        <option value="Data Analytics" {% if entreprise == 'Data Analytics' %}selected{% endif %}>Data Analytics</option>
-                        <option value="HelpDesk Corp" {% if entreprise == 'HelpDesk Corp' %}selected{% endif %}>HelpDesk Corp</option>
+                    <option disabled {% if not entreprise %}selected{% endif %}>Entreprise</option>
+                    {% for company in companies %}
+                        <option value="{{ company }}" {% if entreprise == company %}selected{% endif %}>{{ company }}</option>
+                    {% endfor %}
+
                     </select>
 
                     <select name="domaine" class="offre-card">
-                        <option disabled {% if not domaine %}selected{% endif %}>Domaine</option>
-                        <option value="Informatique" {% if domaine == 'Informatique' %}selected{% endif %}>Informatique</option>
-                        <option value="Design" {% if domaine == 'Design' %}selected{% endif %}>Design</option>
-                        <option value="Gestion" {% if domaine == 'Gestion' %}selected{% endif %}>Gestion</option>
-                        <option value="Big Data" {% if domaine == 'Big Data' %}selected{% endif %}>Big Data</option>
-                        <option value="IT Support" {% if domaine == 'IT Support' %}selected{% endif %}>IT Support</option>
+                    <option disabled {% if not domaine %}selected{% endif %}>Domaine</option>
+                    {% for dom in domaines %}
+                        <option value="{{ dom }}" {% if domaine == dom %}selected{% endif %}>{{ dom }}</option>
+                    {% endfor %}
+
                     </select>
 
                     <button type="submit" class="cta-button">Filtrer</button>
