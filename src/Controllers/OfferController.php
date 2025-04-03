@@ -15,7 +15,18 @@ class OfferController extends Controller
 
     // Méthode pour afficher la liste des offres
     public function OfferPage() {
-        $offers = $this->model1->getAllOffers();  // Récupère toutes les offres via le modèle
-        $this->render('Offers.html.twig', ['offers' => $offers]);  // Rendu de la vue avec les données
+        $entreprise = $_GET['entreprise'] ?? null;
+        $domaine = $_GET['domaine'] ?? null;
+        
+        $offers = $this->model1->getFilteredOffers($entreprise, $domaine);
+        
+    
+        $this->render('Offers.html.twig', [
+            'offers' => $offers,
+            'entreprise' => $entreprise,
+            'domaine' => $domaine
+        ]);
     }
+    
+    
 }
