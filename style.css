@@ -296,6 +296,38 @@ header.show-search-icon .search-icon-navbar {
 }
 
 
+
+/* Bouton de déconnexion stylé */
+.logout-form-navbar {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.btn-logout-navbar {
+  background-color: #896fbf;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-logout-navbar:hover {
+  background-color: #6c4bb6;
+  transform: scale(1.05);
+}
+
+
+
+
+
 .floating-search-bar {
     position: fixed;
     top: 85px; /* juste en dessous du header */
@@ -1837,3 +1869,6 @@ blockquote {
   text-align: center;
   max-width: 400px;
 }
+
+
+

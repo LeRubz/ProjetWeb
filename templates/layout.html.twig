@@ -25,10 +25,14 @@
             {% if sessionUser %}
                 {% if sessionUser.prenom %}
                     <a href="index.php?uri=Profil">{{ sessionUser.prenom }}</a> |
-                    <form method="post" action="src/Controllers/loginoutController.php">
+                    <form method="post" action="src/Controllers/loginoutController.php" class="logout-form-navbar">
                         <input type="hidden" name="action" value="logout">
-                        <button class="logout" type="submit">Se déconnecter</button>
+                        <button type="submit" class="btn-logout-navbar">
+                            🔒 Se déconnecter
+                        </button>
                     </form>
+
+
                 {% else %}
                     <a href="#" onclick="openModal('connexionModal')">Login</a> |
                     <a href="#" onclick="openModal('inscriptionModal')">Sign in</a>
