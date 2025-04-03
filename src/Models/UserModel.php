@@ -41,11 +41,11 @@ class UserModel {
         $stmt->execute([$name, $firstname, $email, $tel, $status, $id]);
     }
 
-    public function deleteUser($id)
-    {
-        $stmt = $this->pdo->prepare("DELETE FROM USER WHERE ID_USER = ?");
+    public function deleteUser($id) {
+        $stmt = $this->pdo->prepare("DELETE FROM user WHERE ID_USER = ?");
         $stmt->execute([$id]);
     }
+    
 
     /*public function createUserFromDashboard($firstname, $lastname, $tel, $email, $password, $status)
     {

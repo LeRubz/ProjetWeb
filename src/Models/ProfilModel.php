@@ -11,6 +11,7 @@ class ProfilModel {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]);
     }
+    
 
     public function getUserById($id) {
         $stmt = $this->pdo->prepare("SELECT * FROM USER WHERE ID_USER = ?");
@@ -25,9 +26,11 @@ class ProfilModel {
     
 
     public function deleteUser($id)
-{
-    $stmt = $this->pdo->prepare("DELETE FROM USER WHERE ID_USER = ?");
-    $stmt->execute([$id]);
-}
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM USER WHERE ID_USER = ?");
+        $stmt->execute([$id]);
+    }
+    
+    
 
 }
