@@ -69,6 +69,10 @@ switch ($uri) {
         $controller->uploadCV();
         break;
               
+    case 'Profil/deletecv':
+        $controller = new ProfilController($twig);
+        $controller->deleteCV();
+        break;
         
 
     case 'Offer':

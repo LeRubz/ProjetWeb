@@ -142,7 +142,27 @@ class ProfilController extends Controller
         exit;
     }
     
-
+    public function deleteCV() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['user'])) {
+            header("Location: index.php?uri=Profil");
+            exit;
+        }
+    
+        $userId = $_SESSION['user']['id'];
+    
+        $this->model1->deleteUserCV($userId);
+    
+        // Met à jour la session
+        $_SESSION['user']['cv'] = null;
+    
+        header("Location: index.php?uri=Profil");
+        exit;
+    }
+    
     
 
 
