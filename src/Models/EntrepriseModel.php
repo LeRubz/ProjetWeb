@@ -17,18 +17,18 @@ class EntrepriseModel {
     public function getAllEntreprises() {
         $stmt = $this->pdo->query("
             SELECT 
-                c.id_company AS id, 
-                c.name AS name, 
-                c.descr AS descr, 
-                c.nb_offer AS nb_offer, 
-                c.middle_ages AS middle_ages, 
-                c.industry AS industry, 
-                c.employees AS employees, 
-                c.logo AS logo, 
-                c.banner AS banner, 
-                a.city AS city 
+                c.ID_COMPANY AS id, 
+                c.NAME AS name, 
+                c.DESCR AS descr, 
+                c.NB_OFFER AS nb_offer, 
+                c.MIDDLE_AGES AS middle_ages, 
+                c.INDUSTRY AS industry, 
+                c.EMPLOYEES AS employees, 
+                c.LOGO AS logo, 
+                c.BANNER AS banner, 
+                a.CITY AS city 
             FROM company c
-            LEFT JOIN address a ON c.id_address = a.id_address
+            LEFT JOIN address a ON c.ID_ADDRESS = a.ID_ADDRESS
         ");
         return $stmt->fetchAll();
     }
@@ -37,18 +37,18 @@ class EntrepriseModel {
     public function getEntrepriseById($id) {
         $stmt = $this->pdo->prepare("
             SELECT 
-                c.id_company AS id, 
-                c.name AS name, 
-                c.descr AS descr, 
-                c.nb_offer AS nb_offer, 
-                c.middle_ages AS middle_ages, 
-                c.industry AS industry, 
-                c.employees AS employees, 
-                c.logo AS logo, 
-                c.banner AS banner, 
-                a.city AS city 
+                c.ID_COMPANY AS id, 
+                c.NAME AS name, 
+                c.DESCR AS descr, 
+                c.NB_OFFER AS nb_offer, 
+                c.MIDDLE_AGES AS middle_ages, 
+                c.INDUSTRY AS industry, 
+                c.EMPLOYEES AS employees, 
+                c.LOGO AS logo, 
+                c.BANNER AS banner, 
+                a.CITY AS city 
             FROM company c
-            LEFT JOIN address a ON c.id_address = a.id_address
+            LEFT JOIN address a ON c.ID_ADDRESS = a.ID_ADDRESS
             WHERE c.id_company = ?
         ");
         $stmt->execute([$id]);
