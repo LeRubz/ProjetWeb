@@ -53,6 +53,9 @@ switch ($uri) {
         $controller->deleteProfil();
         break;
         
+        
+        
+        
 
     case 'Offer':
         $controller = new OfferController($twig);
