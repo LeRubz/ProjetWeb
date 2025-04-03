@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const burger = document.getElementById("burgerMenu");
             const mobileNav = document.getElementById("mobileNav");
         
-            burger.addEventListener("click", () => {
-                mobileNav.classList.toggle("open");
+            burgerMenu.addEventListener('click', () => {
+                mobileNav.classList.toggle('open');
             });
         
             // Fermer le menu si on clique sur un lien

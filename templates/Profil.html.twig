@@ -11,6 +11,7 @@
 
         <div class="profil-info">
             {% if editMode %}
+                <!-- FORMULAIRE DE MISE À JOUR -->
                 <form method="POST" action="index.php?uri=Profil/update" class="profil-form">
                     <label><strong>Nom :</strong>
                         <input type="text" name="nom" value="{{ user.NAME }}" required>
@@ -41,19 +42,22 @@
                     <div class="profil-actions">
                         <button type="submit" class="btn-edit-profil">💾 Enregistrer</button>
                         <a href="index.php?uri=Profil" class="btn-logout" style="background-color:#bbb">Annuler</a>
-
-                        <form method="POST" action="index.php?uri=Profil/delete" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
-                            <button type="submit" class="btn-delete-profil">🗑 Supprimer mon compte</button>
-                        </form>
                     </div>
-
-                    {% if user.ADMIN_STATUS == '1' or user.ADMIN_STATUS == '2' %}
-                        <div class="admin-dashboard-link">
-                            <a href="index.php?uri=Dashboard" class="btn-dashboard">📊 Accéder au Dashboard</a>
-                        </div>
-                    {% endif %}
                 </form>
+
+                <!-- FORMULAIRE DE SUPPRESSION DU COMPTE (hors formulaire de mise à jour) -->
+                <form method="POST" action="index.php?uri=Profil/delete" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
+                    <button type="submit" class="btn-delete-profil">🗑 Supprimer mon compte</button>
+                </form>
+
+                {% if user.ADMIN_STATUS == '1' or user.ADMIN_STATUS == '2' %}
+                    <div class="admin-dashboard-link">
+                        <a href="index.php?uri=Dashboard" class="btn-dashboard">📊 Accéder au Dashboard</a>
+                    </div>
+                {% endif %}
+
             {% else %}
+                <!-- MODE LECTURE SEULE -->
                 <p><strong>Nom :</strong> {{ user.NAME }}</p>
                 <p><strong>Prénom :</strong> {{ user.FIRSTNAME }}</p>
                 <p><strong>Email :</strong> {{ user.EMAIL }}</p>
@@ -70,13 +74,13 @@
 
                 <div class="profil-actions">
                     <a href="index.php?uri=Profil&edit=1" class="btn-edit-profil">Modifier mes infos</a>
-
-                    {% if user.ADMIN_STATUS == '2' %} 
-                        <div class="admin-dashboard-link" style="margin-top: 20px;">
-                            <a href="index.php?uri=Dashboard" class="btn-dashboard">📊 Accéder au Dashboard</a>
-                        </div>
-                    {% endif %}
                 </div>
+
+                {% if user.ADMIN_STATUS == '2' %}
+                    <div class="admin-dashboard-link" style="margin-top: 20px;">
+                        <a href="index.php?uri=Dashboard" class="btn-dashboard">📊 Accéder au Dashboard</a>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>

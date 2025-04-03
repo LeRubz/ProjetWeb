@@ -1,144 +1,156 @@
 {% extends 'layout.html.twig' %}    
-    
+
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
-    <main>
+<main>
 
-
-
-        <section class="entreprise-preview-container">
+    <section class="entreprise-preview-container">
+        <div class="entreprise-preview">
+            <div class="entreprise-card">
+                <img src="images/buffalo.png" alt="Buffalo Grill">
+                <h3>Buffalo Grill - Restaurant</h3>
+                <p class="nb_job">1278 jobs</p>
+                <a href="" class="arrow-link">➜</a>
+            </div>
     
-            <div class="entreprise-preview">
-                <div class="entreprise-card">
-                    <img src="images/buffalo.png" alt="Buffalo Grill">
-                    <h3>Buffalo Grill - Restaurant</h3>
-                    <p class="nb_job">1278 jobs</p>
-                    <a href="" class="arrow-link">➜</a>
-                </div>
-        
-                <div class="entreprise-card">
-                    <img src="images/azae.png" alt="Azaé">
-                    <h3>Azaé - Service à la personne</h3>
-                    <p class="nb_job">624 jobs</p>
-                    <a href="#" class="arrow-link">➜</a>
-                </div>
-        
-                <div class="entreprise-card">
-                    <img src="images/superu.png" alt="Super U">
-                    <h3>Super U - Super Marché</h3>
-                    <p class="nb_job">2112 jobs</p>
-                    <a href="#" class="arrow-link">➜</a>
-                </div>
+            <div class="entreprise-card">
+                <img src="images/azae.png" alt="Azaé">
+                <h3>Azaé - Service à la personne</h3>
+                <p class="nb_job">624 jobs</p>
+                <a href="#" class="arrow-link">➜</a>
             </div>
-        
-            <div class="all-enterprises-button">
-                <a href="index.php?uri=Companies">Voir toutes les entreprises</a>
+    
+            <div class="entreprise-card">
+                <img src="images/superu.png" alt="Super U">
+                <h3>Super U - Super Marché</h3>
+                <p class="nb_job">2112 jobs</p>
+                <a href="#" class="arrow-link">➜</a>
             </div>
-        
-        </section>
+        </div>
+    
+        <div class="all-enterprises-button">
+            <a href="index.php?uri=Companies">Voir toutes les entreprises</a>
+        </div>
+    </section>
 
-        <hr class="section-divider">
+    <hr class="section-divider">
 
-        
-        <section class="internhub-info">
-            <h2>DU MAL À TROUVER UN STAGE ?</h2>
-            <p class="highlight">Tout est plus simple avec Internhub</p>
-        
-            <div class="info-content">
-                <img src="images/etapes.png" alt="Étapes de candidature">
-                <div class="info-text">
-                    <h3>Suivez vos candidatures</h3>
-                    <p>Suivez en direct chaque étape de votre candidature.<br>
-                       Postulez, et soyez informé immédiatement dès qu’il y a du nouveau</p>
-                    <a href="Offres" class="cta-button">Voir les offres</a>
-                </div>
+    <section class="internhub-info">
+        <h2>DU MAL À TROUVER UN STAGE ?</h2>
+        <p class="highlight">Tout est plus simple avec Internhub</p>
+    
+        <div class="info-content">
+            <img src="images/etapes.png" alt="Étapes de candidature">
+            <div class="info-text">
+                <h3>Suivez vos candidatures</h3>
+                <p>Suivez en direct chaque étape de votre candidature.<br>
+                   Postulez, et soyez informé immédiatement dès qu’il y a du nouveau</p>
+                <a href="index.php?uri=Offer" class="cta-button">Voir les offres</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-
-        <section class="internhub-info reverse">
-            <div class="info-content">
-                <div class="info-text">
-                    <h3>Faites le bon choix, en toute confiance</h3>
-                    <p>Salaire, télétravail, ambiance… Ne choisissez plus à l’aveugle : <br>
-                        accédez au nombre d’offres publiées, à l’âge moyen de l’entreprise, <br>
-                        à sa note sur 5 étoiles et découvrez sa description complète avant<br>
-                        de postuler.
-                    </p>
-                    <a href="Entreprises" class="cta-button">Voir les entreprises</a>
-                </div>
-                <img src="images/Stats.png" alt="Statistiques">
+    <section class="internhub-info reverse">
+        <div class="info-content">
+            <div class="info-text">
+                <h3>Faites le bon choix, en toute confiance</h3>
+                <p>Salaire, télétravail, ambiance… Ne choisissez plus à l’aveugle : <br>
+                    accédez au nombre d’offres publiées, à l’âge moyen de l’entreprise, <br>
+                    à sa note sur 5 étoiles et découvrez sa description complète avant<br>
+                    de postuler.
+                </p>
+                <a href="index.php?uri=Companies" class="cta-button">Voir les entreprises</a>
             </div>
-        </section>
+            <img src="images/Stats.png" alt="Statistiques">
+        </div>
+    </section>
 
-
-        <section class="internhub-info2">
-            <div class="info-content">
-                <img src="images/oeuil.png" alt="profile">
-                <div class="info-text">
-                    <h3>Faites partie des profils les plus visibles</h3>
-                    <p>En montrant votre intérêt et en restant actif, votre profil est<br>
-                        automatiquement mis en avant auprès des recruteurs. Plus<br>
-                        de chances d’être vu, plus rapidement.
-                    </p>
-                    <a href="profil" class="cta-button">Gérer mon profil</a>
-                </div>
+    <section class="internhub-info2">
+        <div class="info-content">
+            <img src="images/oeuil.png" alt="profile">
+            <div class="info-text">
+                <h3>Faites partie des profils les plus visibles</h3>
+                <p>En montrant votre intérêt et en restant actif, votre profil est<br>
+                    automatiquement mis en avant auprès des recruteurs. Plus<br>
+                    de chances d’être vu, plus rapidement.
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <hr class="section-divider">
 
-        <hr class="section-divider">
-
-        
-        <section class="cv-section">
-            <h2>Préparez-vous à décrocher votre <span>stage</span> !</h2>
-        
-            <div class="cv-cards">
-                <div class="cv-card shadow-purple">
-                    <h3 class="white-text">155 000</h3>
-                    <p class="white-text">CV lus en moyenne<br>chaque jour, soyez le <br>prochain à être vu !</p>
-                </div>
-        
-                <div class="cv-card">
-                    <h3 class="black-text">900 710</h3>
-                    <p class="black-text">offres en ce moment, on vous envoie celles qui collent ?</p>
-                </div>
-        
-                <div class="cv-card action">
-                    <div class="action-content">
-                        <div class="text-icon">
-                            <p>soyez visible<br>auprès des<br>
-                            recruteurs</p>
-                            <img src="images/cv-icon.png" alt="Icône CV">
-                        </div>
-                        <a href="#" class="cta-button dark">Déposer mon CV</a>
+    <section class="cv-section">
+        <h2>Préparez-vous à décrocher votre <span>stage</span> !</h2>
+    
+        <div class="cv-cards">
+            <div class="cv-card shadow-purple">
+                <h3 class="white-text">155 000</h3>
+                <p class="white-text">CV lus en moyenne<br>chaque jour, soyez le <br>prochain à être vu !</p>
+            </div>
+    
+            <div class="cv-card">
+                <h3 class="black-text">900 710</h3>
+                <p class="black-text">offres en ce moment, on vous envoie celles qui collent ?</p>
+            </div>
+    
+            <div class="cv-card action">
+                <div class="action-content">
+                    <div class="text-icon">
+                        <p>soyez visible<br>auprès des<br>
+                        recruteurs</p>
+                        <img src="images/cv-icon.png" alt="Icône CV">
                     </div>
-                </div>
-                
-                
-        
-        </section>
-        
-        <hr class="section-divider">
-
-        <section class="internhub-info3">
-            <div class="info-content">
-                <img src="images/mobile.png" alt="mobile">
-                <div class="info-text">
-                    <h3>Postulez où que vous soyez</h3>
-                    <p>Le site est 100 % adapté au mobile : <br>
-                        explorez les offres, suivez vos candidatures<br>
-                        et restez informé directement depuis votre <br>
-                        téléphone.
-                        
-                    </p>
+                    <a href="#" class="cta-button cv-button" onclick="handleCvClick()">Déposer mon CV</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section class="internhub-info3">
+        <div class="info-content">
+            <img src="images/mobile.png" alt="mobile">
+            <div class="info-text">
+                <h3>Postulez où que vous soyez</h3>
+                <p>Le site est 100 % adapté au mobile : <br>
+                    explorez les offres, suivez vos candidatures<br>
+                    et restez informé directement depuis votre <br>
+                    téléphone.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup si non connecté -->
+    <div id="popup-login-cv" style="display:none;" class="popup-overlay">
+        <div class="popup-box">
+            <p>🔒 Vous devez être connecté pour déposer votre CV.</p>
+        </div>
+    </div>
+
+</main>
+
+<!-- JS pour gérer le bouton "Déposer mon CV" -->
+<script>
+    function handleCvClick() {
+        const isLoggedIn = {{ user is defined and user ? 'true' : 'false' }};
+        if (isLoggedIn === true) {
+            window.location.href = 'index.php?uri=Profil';
+        } else {
+            const popup = document.getElementById('popup-login-cv');
+            popup.style.display = 'flex';
+            setTimeout(() => {
+                popup.style.display = 'none';
+                window.location.href = 'index.php';
+            }, 5000);
+        }
+    }
+</script>
 
 
-        
-    </main>
-{% endblock %}  
-    
+
+
+{% endblock %}

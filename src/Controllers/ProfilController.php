@@ -77,20 +77,25 @@ class ProfilController extends Controller
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
+    
         if (!isset($_SESSION['user'])) {
-            header("Location: /login");
+            echo "Pas connecté";
             exit;
         }
-
+    
         $userId = $_SESSION['user']['id'];
-        
+    
+        // TEST : voir si ça passe ici
+        echo "Suppression utilisateur ID $userId";
         $this->model1->deleteUser($userId);
         session_destroy();
-
-        header("Location: index.php"); // redirige vers l'accueil
+    
+        header("Location: index.php");
         exit;
     }
+    
+    
+    
 
     
 
