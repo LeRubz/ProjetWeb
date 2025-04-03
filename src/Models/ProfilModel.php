@@ -31,6 +31,17 @@ class ProfilModel {
         $stmt->execute([$id]);
     }
     
+    public function insertCVUpload($nom, $type, $hash, $extension) {
+        $stmt = $this->pdo->prepare("INSERT INTO UPLOAD (NOM, TYPE, HASH, EXTENSION) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nom, $type, $hash, $extension]);
+        return $this->pdo->lastInsertId();
+    }
+    
+    public function setUserCV($userId, $uploadId) {
+        $stmt = $this->pdo->prepare("UPDATE USER SET CV = ? WHERE ID_USER = ?");
+        $stmt->execute([$uploadId, $userId]);
+    }
+    
     
 
 }

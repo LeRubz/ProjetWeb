@@ -13,6 +13,8 @@ use App\Controllers\WishlistController;
 use App\Controllers\StaticController;
 use App\Controllers\DashboardController;
 use App\Controllers\DashboardCompanyController;
+use App\Controllers\PostulationController;
+
 
 // Créer une instance de Twig
 $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -61,14 +63,24 @@ switch ($uri) {
         $controller->deleteProfil();
         break;
         
-        
-        
+
+    case 'Profil/uploadcv':
+        $controller = new ProfilController($twig);
+        $controller->uploadCV();
+        break;
+              
         
 
     case 'Offer':
         $controller = new OfferController($twig);
         $controller->OfferPage($user);
         break;
+
+    case 'Postuler':
+        $controller = new PostulationController($twig);
+        $controller->postuler();
+        break;
+        
 
     case 'Wishlist':
         $controller = new WishlistController($twig);
