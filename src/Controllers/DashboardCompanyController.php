@@ -42,10 +42,10 @@ class DashboardCompanyController
             // Vérifier que $_FILES['logo'] et $_FILES['banner'] contiennent les bons tableaux
             if (is_array($_FILES['logo']) && is_array($_FILES['banner'])) {
                 // Upload du logo
-                $logoId = $this->model->uploadFile($_FILES['logo'], 'logos');
+                $logoId = $this->model->uploadFile($_FILES['logo'], 'logo');
 
                 // Upload de la bannière
-                $bannerId = $this->model->uploadFile($_FILES['banner'], 'banners');
+                $bannerId = $this->model->uploadFile($_FILES['banner'], 'banner');
 
                 // Insérer les données de l'entreprise dans la base de données avec les IDs du logo et de la bannière
                 $this->model->createCompany($name, $descr, $nb_offer, $middle_ages, $industry, $employees, $city, $road, $num, $country, $postal_code, $logoId, $bannerId);
