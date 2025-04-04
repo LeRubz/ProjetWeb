@@ -21,12 +21,27 @@
                         <span class="tag">~{{ company.employees }} salariés</span>
                     </div>
                     <div class="bas-carte">
-                        <a href="{{ company.company_show_url }}" class="btn-decouvrir">Découvrir</a>
+                        <button class="btn-decouvrir" onclick="openModal('modal-{{ company.id }}')">Voir plus</button>
                         <span class="nb-jobs"><strong>{{ company.nb_offer }}</strong> jobs</span>
                     </div>
                 </div>
             </div>
+
+            <!-- 🪟 Modale d'informations -->
+            <div id="modal-{{ company.id }}" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-{{ company.id }}')">&times;</span>
+                    <h2>{{ company.name }}</h2>
+                    <p><strong>Description :</strong> {{ company.descr }}</p>
+                    <p><strong>Ville :</strong> {{ company.city }}</p>
+                    <p><strong>Secteur :</strong> {{ company.industry }}</p>
+                    <p><strong>Nombre d'employés :</strong> {{ company.employees }}</p>
+                    <p><strong>Âge moyen :</strong> {{ company.middle_ages }} ans</p>
+                    <p><strong>Offres disponibles :</strong> {{ company.nb_offer }}</p>
+                </div>
+            </div>
         {% endfor %}
+
 
 
 
