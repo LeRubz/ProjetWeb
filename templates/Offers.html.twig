@@ -39,21 +39,36 @@
 
         <!-- Liste des offres -->
         <section class="liste-global-offres">
-            {% for offer in offers %}
-                <div class="offre-card">
-                    <h3>{{ offer.TITRE }}</h3>
-                    <p><strong>Entreprise :</strong> {{ offer.COMPANY_NAME }}</p>
-                    <p>{{ offer.DOMAIN_ACT }} - {{ offer.DESCR|length > 60 ? offer.DESCR|slice(0, 60) ~ '...' : offer.DESCR }}</p>
-                    <div class="tags">
-                        <span class="tag">{{ offer.CONTRACT }}</span>
-                        <span class="tag">{{ offer.SALARY }} €</span>
-                    </div>
-                    <p class="date">publié le {{ offer.PUB_DATE|date("d/m/Y") }}</p>
-                    <button class="btn-offre">Voir l'offre</button>
+        {% for offer in offers %}
+            <div class="offre-card">
+                <h3>{{ offer.TITRE }}</h3>
+                <p><strong>Entreprise :</strong> {{ offer.COMPANY_NAME }}</p>
+                <p>{{ offer.DOMAIN_ACT }} - {{ offer.DESCR|length > 60 ? offer.DESCR|slice(0, 60) ~ '...' : offer.DESCR }}</p>
+                <div class="tags">
+                    <span class="tag">{{ offer.CONTRACT }}</span>
+                    <span class="tag">{{ offer.SALARY }} €</span>
                 </div>
-            {% else %}
-                <p>Aucune offre disponible actuellement.</p>
-            {% endfor %}
+                <p class="date">publié le {{ offer.PUB_DATE|date("d/m/Y") }}</p>
+                <button class="btn-offre" onclick="openModal('modal-{{ offer.ID_OFFER }}')">Voir l'offre</button>
+            </div>
+
+            <!-- Modal -->
+            <div id="modal-{{ offer.ID_OFFER }}" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-{{ offer.ID_OFFER }}')">&times;</span>
+                    <h2>{{ offer.TITRE }}</h2>
+                    <p><strong>Entreprise :</strong> {{ offer.COMPANY_NAME }}</p>
+                    <p><strong>Domaine :</strong> {{ offer.DOMAIN_ACT }}</p>
+                    <p><strong>Description :</strong> {{ offer.DESCR }}</p>
+                    <p><strong>Contrat :</strong> {{ offer.CONTRACT }}</p>
+                    <p><strong>Salaire :</strong> {{ offer.SALARY }} €</p>
+                    <p><strong>Date de publication :</strong> {{ offer.PUB_DATE|date("d/m/Y") }}</p>
+
+                    <button onclick="postuler({{ offer.ID_OFFER }})" class="cta-button">Postuler</button>
+                </div>
+            </div>
+        {% endfor %}
+
         </section>
     </div>
 </main>

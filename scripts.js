@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             });
         });
-        
+
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('noresult')) {
@@ -159,4 +159,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 3000);
         }
         
-        
+
+        function postuler(idOffer) {
+            fetch('index.php?uri=Postuler', {
+                method: 'POST',
+                body: new URLSearchParams({ id_offer: idOffer }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'no_cv') {
+                    showPopup("⚠️ Veuillez d'abord déposer un CV depuis votre profil.");
+                } else if (data.status === 'success') {
+                    showPopup("✅ Postulation envoyée avec succès !");
+                } else if (data.status === 'not_logged') {
+                    showPopup("❌ Vous devez être connecté pour postuler.");
+                }
+            });
+        }

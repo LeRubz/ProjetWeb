@@ -95,8 +95,74 @@ class ProfilController extends Controller
     }
     
     
+    public function uploadCV() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     
-
+        if (!isset($_SESSION['user'])) {
+            header("Location: /login");
+            exit;
+        }
+    
+        $userId = $_SESSION['user']['id'];
+    
+        if (!isset($_FILES['cv']) || $_FILES['cv']['error'] !== UPLOAD_ERR_OK) {
+            die('Erreur lors du téléchargement du fichier.');
+        }
+    
+        $file = $_FILES['cv'];
+    
+        // Vérifie le type MIME
+        if ($file['type'] !== 'application/pdf') {
+            die('Seuls les fichiers PDF sont autorisés.');
+        }
+    
+        $filename = $file['name'];
+        $tmpPath = $file['tmp_name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    
+        $fileContent = file_get_contents($tmpPath);
+        $hash = hash('sha256', $fileContent);
+    
+        // Destination physique (facultatif si tu stockes juste la référence)
+        $destination = __DIR__ . '/../../uploads/cv/' . $hash . '.' . $ext;
+        move_uploaded_file($tmpPath, $destination);
+    
+        // Insère dans la table UPLOAD
+        $uploadId = $this->model1->insertCVUpload($filename, $file['type'], $hash, $ext);
+    
+        // Associe le CV à l'utilisateur
+        $this->model1->setUserCV($userId, $uploadId);
+    
+        // Mets à jour la session si besoin
+        $_SESSION['user']['cv'] = $uploadId;
+    
+        header("Location: index.php?uri=Profil");
+        exit;
+    }
+    
+    public function deleteCV() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['user'])) {
+            header("Location: index.php?uri=Profil");
+            exit;
+        }
+    
+        $userId = $_SESSION['user']['id'];
+    
+        $this->model1->deleteUserCV($userId);
+    
+        // Met à jour la session
+        $_SESSION['user']['cv'] = null;
+    
+        header("Location: index.php?uri=Profil");
+        exit;
+    }
+    
     
 
 
