@@ -94,6 +94,20 @@
                         <button type="submit" class="btn-edit-profil">📄 Télécharger mon CV</button>
                     </form>
                 </div>
+
+                {% if user.CV_HASH %}
+                    <div class="cv-section">
+                        <p><strong>CV enregistré :</strong>
+                            <a href="uploads/cv/{{ user.CV_HASH }}.{{ user.CV_EXTENSION }}" target="_blank">📄 Voir mon CV</a>
+                        </p>
+                        <form method="POST" action="index.php?uri=Profil/deletecv" onsubmit="return confirm('Supprimer votre CV ?');">
+                            <button type="submit" class="btn-delete-profil" style="margin-top: 10px;">🗑 Supprimer mon CV</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <p><strong>Aucun CV déposé.</strong></p>
+                {% endif %}
+
             {% endif %}
         </div>
     </div>
